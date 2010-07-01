@@ -1,0 +1,70 @@
+{% extends "admin/main.html" %}
+
+{% block page_name %}User list{% endblock %}
+
+{% block content %}
+
+<style>
+	.mytable
+	{
+		border:0px solid #ffffff;
+		font-size:16px;
+	}
+	.mytable > tr > td
+	{
+		border:10px solid #0f0f0f;
+		background-color:#999999;
+		text-align:center;
+	}
+	.mytable tbody tr
+	{
+		border:10px solid #0f0f0f;
+
+	}
+	.mytable td
+	{
+		padding-left:10px;
+	}
+	
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	$(".mytable tbody tr").hover(function(){
+	$(this).css("background-color", "#ffffff");
+	},function(){
+	$(this).attr("style","");
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	});
+});
+</script>
+
+<a class="art-button" href="/admin/products/add/">Add product</a>
+
+
+<table class="mytable" style="width:100%;">
+	<thead>
+		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
+			<td style="padding:10px;">Login</td>
+			<td style="padding:10px;">E-Mail</td>
+			<td style="padding:10px;">&nbsp;</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for user in users %}
+	<tr>
+		<td>
+			{{ user.username }}
+		</td>
+		<td>
+			{{ user.email }}
+		</td>
+		<td align="center">
+			<a href="/admin/users/del/{{ user.id }}/" class="art-button">Remove</a>
+		</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

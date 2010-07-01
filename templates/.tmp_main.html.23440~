@@ -1,0 +1,43 @@
+
+<html>
+	<head>
+		<title>
+			{% block title %}Скандинавский аукцион{% endblock %}
+		</title>
+	</head>
+	<body>
+		<table width="100%">
+			<tr>
+				<td colspan="2" align="right">
+					{{ user.username }}
+					{% if user.is_authenticated %}
+					    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+					{% else %}
+					    <p>Welcome, new user. Please log in.</p>
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<ul>
+						<li>
+							<a href="/">Main</a>
+						</li>
+						<li>
+							<a href="/login">Authorization</a>
+						</li>
+						<li>
+							<a href="/products">Products</a>
+						</li>
+						<li>
+							<a href="/logout">Log Out</a>
+						</li>
+						
+					</ul>
+					
+				</td>
+				<td>{% block content %}{% endblock %}</td>
+			</tr>
+		</table>
+	</body>
+</html>

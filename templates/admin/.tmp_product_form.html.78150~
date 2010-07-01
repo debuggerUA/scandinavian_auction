@@ -1,0 +1,17 @@
+{% extends "admin/main.html" %}
+
+{% block content %}
+
+
+<form action="/admin/products/add/" method="post" enctype="multipart/form-data">
+	<table>
+		{{ product_form }}
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value=" -=Add=- ">
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

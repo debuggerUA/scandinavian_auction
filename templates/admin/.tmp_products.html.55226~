@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+<a href="/products/add/">Add product</a>
+
+
+<ul>
+{% for product in products %}
+<li>
+{{ product }}
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

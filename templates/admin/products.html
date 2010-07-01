@@ -1,0 +1,93 @@
+{% extends "admin/main.html" %}
+
+{% block page_name %}Product list{% endblock %}
+
+{% block content %}
+<style>
+	.mytable
+	{
+		border:0px solid #ffffff;
+		font-size:16px;
+	}
+	.mytable > tr > td
+	{
+		border:10px solid #0f0f0f;
+		background-color:#999999;
+		text-align:center;
+	}
+	.mytable tbody tr
+	{
+		border:10px solid #0f0f0f;
+
+	}
+	.mytable td
+	{
+		padding-left:10px;
+	}
+	
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	$(".mytable tbody tr").hover(function(){
+	$(this).css("background-color", "#ffffff");
+	},function(){
+	$(this).attr("style","");
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	});
+});
+</script>
+
+<a class="art-button" href="/admin/products/add/">Add product</a>
+
+
+<table class="mytable" style="width:100%;">
+	<thead>
+		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
+			<td style="padding:10px;">Name</td>
+			<td style="padding:10px;">Cost</td>
+			<td style="padding:10px;">Image</td>
+			<td style="padding:10px;">Description</td>
+			<td style="padding:10px;">&nbsp;</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for product in products.object_list %}
+		<tr>
+			<td>
+				<a href="/admin/products/{{ product.id }}/" >{{ product.name }}</a>
+			</td>
+			<td>
+				{{ product.cost }}
+			</td>
+			<td align="center">
+				<img src="{{ MEDIA_URL }}{{ product.preview_image }}"/>
+			</td>
+			<td>
+				{{ product.desc }}
+			</td>
+			<td align="center">
+				<a href="/admin/products/edit/{{ product.id }}/" class="art-button">Edit</a>
+				<a href="/admin/products/del/{{ product.id }}/" class="art-button">Remove</a>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<div class="pagination" align="center" style="font-size:16px;">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">&lt;&lt;</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">&gt;&gt;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

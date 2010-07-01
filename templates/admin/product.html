@@ -1,0 +1,28 @@
+{% extends "admin/main.html" %}
+
+{% block page_name %}Product view{% endblock %}
+
+{% block content %}
+
+<table>
+	<tr>
+		<td align="right"><b>Name:</b></td>
+		<td>{{ product.name }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Cost:</b></td>
+		<td>{{ product.cost }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Desc:</b></td>
+		<td>{{ product.desc }}</td>
+	</tr>
+	<tr>
+		<td><b>Image:</b></td>
+		<td><img src="{{ MEDIA_URL }}{{ product.image }}" style="border:2px solid #ffffff;"/></td>
+	</tr>
+</table>
+
+
+
+{% endblock %}
