@@ -17,5 +17,10 @@ def products_list(request):
     except (EmptyPage, InvalidPage):
         products = paginator.page(paginator.num_pages)
     return render_to_response('products.html',{'products':products},context_instance=RequestContext(request))
+
+def show_product(request,id):
+    p=Product.objects.get(id=id)
+    return render_to_response('product_form.html',{'product':p},context_instance=RequestContext(request))
+    
     
     
