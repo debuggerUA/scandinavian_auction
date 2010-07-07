@@ -26,10 +26,14 @@ def registration(request):
         data = request.POST.copy()
         form = RegistrationForm(data)
         if form.is_valid():
-            user = User.objects.create_user(request.POST.get("login"), request.POST.get('email'), request.POST.get('password'))
-            user.save()
-            return HttpResponseRedirect("/")
-    return render_to_response("registration_form.html", {'form' : form, 'errors': form.errors },context_instance=RequestContext(request))
+            try:
+                user = User.objects.create_user(request.POST.get("login"), request.POST.get('email'), request.POST.get('password'))
+                user.save()
+                return HttpResponseRedirect("/")
+            except:
+                err_mess = 'This username is unavailable.'
+                return render_to_response("registration_form.html", {'form' : form, 'errors': form.errors, 'error_message': err_mess },context_instance=RequestContext(request))
+    return render_to_response("registration_form.html", {'form' : form, 'errors': form.errors, },context_instance=RequestContext(request))
 
 def log_out(request):
     auth.logout(request)
