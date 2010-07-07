@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'scandinavian_auction.products',
     'scandinavian_auction.auction',
+    'scandinavian_auction.categories',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

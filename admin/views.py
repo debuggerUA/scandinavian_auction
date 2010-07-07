@@ -29,7 +29,7 @@ def superuser_login_required(func):
 
 #Email notification
 def send_notification(params):
-    #Notification types: 1-new product, 2-new bid
+    #Notification types: 1-new product, 2-new bid, 3-new category
     email_from = 'debugger88@gmail.com'
     server = 'smtp.gmail.com'
     port = 587
@@ -46,7 +46,20 @@ def send_notification(params):
         s.starttls()
         s.login(user_name, user_pass)
         s.sendmail(email_from, params['to'], msg.as_string())
-    s.quit()
+        s.quit()
+    if params['type'] == 3:
+        text = "New category added. See at <a href='http://localhost:8000/categories/'>http://localhost:8000/categories/</a>"
+        subj = 'New category!'
+        msg = MIMEText(text, "", "utf-8")
+        msg['Subject'] = subj
+        msg['From'] = email_from
+        msg['To'] = params['to']
+        s = smtplib.SMTP(server, port)
+        s.starttls()
+        s.login(user_name, user_pass)
+        s.sendmail(email_from, params['to'], msg.as_string())
+        s.quit()
+    
 
 @superuser_login_required
 def add_product(request):
