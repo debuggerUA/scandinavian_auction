@@ -55,7 +55,6 @@ def add_product(request):
         data = request.POST.copy()
         img_file=request.FILES.get('image')
         file_data= {'image':img_file}
-        #print data
         form=ProductForm(data,file_data)
         if form.is_valid():
             simple_upload_file=SimpleUploadedFile(img_file.name,img_file.read())
