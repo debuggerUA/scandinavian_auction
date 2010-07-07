@@ -3,6 +3,7 @@ from scandinavian_auction.admin.views import get_products, admin_login, admin_ma
     add_product, add_auction, get_auctions, del_auction, edit_auction
 from scandinavian_auction.auth.views import login, registration, log_out
 from scandinavian_auction.views import main
+from scandinavian_auction.products.views import products_list
 from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -13,6 +14,7 @@ urlpatterns = patterns('',
     
     (r'^$',main),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_DOC_ROOT}),
+    (r'^products/$', products_list),
     
     #authorisation views
     (r'^login/$',login),

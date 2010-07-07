@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
@@ -11,6 +12,9 @@ from scandinavian_auction.auth.forms import LoginForm
 from scandinavian_auction.auction.models import Auction, Bids
 from scandinavian_auction.auction.forms import AuctionForm
 import Image
+from django.core.mail import send_mail, EmailMessage
+import smtplib
+from email.MIMEText import MIMEText
 from StringIO import StringIO
 from functools import wraps
 
@@ -23,6 +27,27 @@ def superuser_login_required(func):
             return HttpResponseRedirect('/admin/login')
     return check
 
+#Email notification
+def send_notification(params):
+    #Notification types: 1-new product, 2-new bid
+    email_from = 'debugger88@gmail.com'
+    server = 'smtp.gmail.com'
+    port = 587
+    user_name = 'debugger88@gmail.com'
+    user_pass = 'd534fdgg'
+    if params['type'] == 1:
+        text = "New product added. See at <a href='http://localhost:8000/products/'>http://localhost:8000/products/</a>"
+        subj = 'New product at auction!'
+        msg = MIMEText(text, "", "utf-8")
+        msg['Subject'] = subj
+        msg['From'] = email_from
+        msg['To'] = params['to']
+        s = smtplib.SMTP(server, port)
+        s.starttls()
+        s.login(user_name, user_pass)
+        s.sendmail(email_from, params['to'], msg.as_string())
+    s.quit()
+
 @superuser_login_required
 def add_product(request):
     form=ProductForm()
@@ -30,7 +55,7 @@ def add_product(request):
         data = request.POST.copy()
         img_file=request.FILES.get('image')
         file_data= {'image':img_file}
-        print data
+        #print data
         form=ProductForm(data,file_data)
         if form.is_valid():
             simple_upload_file=SimpleUploadedFile(img_file.name,img_file.read())
@@ -42,6 +67,9 @@ def add_product(request):
             product=Product(name=data['name'],cost=data['cost'],desc=data['desc'],image=simple_upload_file,preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue()))
             outfile.close()
             product.save()
+            #creating notification email
+            params = {'pr_name': product.name, 'to': 'debuggerUA@yandex.ru', 'type': 1}
+            send_notification(params)
             return HttpResponseRedirect('/admin/products/')
     return render_to_response('admin/product_form.html',{'product_form':form,'edit':False},context_instance=RequestContext(request))
 
