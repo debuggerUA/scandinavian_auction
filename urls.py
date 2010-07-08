@@ -15,8 +15,7 @@ urlpatterns = patterns('',
     
     (r'^$',main),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_DOC_ROOT}),
-    (r'^products/$', products_list),
-    (r'^products/(\d+)/$', show_product),
+    
     
     #authorisation views
     (r'^login/$',login),
@@ -25,7 +24,8 @@ urlpatterns = patterns('',
     #end authorisation views
     
     #products views
-    
+    (r'^products/$', products_list),
+    (r'^products/(\d+)/$', show_product),
     #end products views
     
     #admin views

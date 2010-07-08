@@ -11,6 +11,7 @@ from scandinavian_auction.products.models import Product
 from scandinavian_auction.auth.forms import LoginForm
 from scandinavian_auction.auction.models import Auction, Bids
 from scandinavian_auction.auction.forms import AuctionForm
+from scandinavian_auction.categories.models import Category
 import Image
 from django.core.mail import send_mail, EmailMessage
 import smtplib
@@ -76,7 +77,7 @@ def add_product(request):
             img.thumbnail((128, 128))
             outfile = StringIO()
             img.save(outfile,format="JPEG")
-            product=Product(name=data['name'],cost=data['cost'],desc=data['desc'],image=simple_upload_file,preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue()))
+            product=Product(name=data['name'],category=Category.objects.get(id=data['category']), cost=data['cost'],desc=data['desc'],image=simple_upload_file,preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue()))
             outfile.close()
             product.save()
             #creating notification email
