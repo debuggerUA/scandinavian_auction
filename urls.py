@@ -4,7 +4,7 @@ from scandinavian_auction.admin.views import get_products, admin_login, admin_ma
 from scandinavian_auction.auth.views import login, registration, log_out
 from scandinavian_auction.views import main
 from scandinavian_auction.products.views import products_list, show_product
-from scandinavian_auction.categories.views import categories_list_admin, category_show_admin, add_category
+from scandinavian_auction.categories.views import categories_list_admin, category_show_admin, add_category, show_category, show_categories
 from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -27,6 +27,11 @@ urlpatterns = patterns('',
     (r'^products/$', products_list),
     (r'^products/(\d+)/$', show_product),
     #end products views
+    
+    #categories
+    (r'^categories/$', show_categories),
+    (r'^categories/(\d+)/$', show_category),
+    #end categories
     
     #admin views
     (r'^admin/$',admin_main),

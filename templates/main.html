@@ -38,7 +38,7 @@
                     </div>
 					<div align="right" style="color:white;padding-right:20px;">
 						{% if user.is_authenticated %}
-						    <p>Welcome, {{ user.username }}. <a href="/logout">Log Out</a></p>
+						    <p>Welcome, {{ user.username }}. {% if user.is_staff %}<a href="/admin">Administration</a> {% endif %}<a href="/logout">Log Out</a></p>
 						{% else %}
 						    <p>Welcome, new user. Please <a href="/login">log in.</a></p>
 						{% endif %}
