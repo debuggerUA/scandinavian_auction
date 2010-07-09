@@ -1,0 +1,18 @@
+{% extends "admin/main.html" %}
+
+{% block page_name %}{% if edit %} Edit category {% else %} Add Category {% endif %}{% endblock %}
+
+{% block content %}
+
+<form action="/admin/categories/{% if edit %}edit/{{ id }}/{% else %}add/{% endif %}" method="post" enctype="multipart/form-data">
+	<table>
+		{{ category_form }}
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="{% if edit %} Save {% else %} Add {% endif %}" class="art-button" style="width:150px;text-align:center;">
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}

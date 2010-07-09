@@ -1,0 +1,9 @@
+<head>
+	<title>
+		{{ product.name }}
+		</title>
+	</head>
+
+<body>
+	<a href='/'>Main</a> <a href='#'>Categories</a> {% if user.is_authenticated %} <a href='#'>My cabinet</a>{% endif %}
+</body>

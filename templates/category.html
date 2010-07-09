@@ -1,0 +1,9 @@
+<head>
+	<title>
+		{{ category.name }}
+		</title>
+	</head>
+
+<body>
+	<a href='/'>Main</a> <a href='/categories'>Categories</a> {% if user.is_authenticated %} <a href='#'>My cabinet</a>{% endif %}
+</body>

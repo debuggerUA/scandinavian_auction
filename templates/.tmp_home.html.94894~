@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+
+{% block content %}
+This is HOME PAGE !
+<table>
+	<tr>
+		{% for auction in auctions %}
+			<td>
+				<div class="art-block">
+		            <div class="art-block-tl"></div>
+		            <div class="art-block-tr"></div>
+		            <div class="art-block-bl"></div>
+		            <div class="art-block-br"></div>
+		            <div class="art-block-tc"></div>
+		            <div class="art-block-bc"></div>
+		            <div class="art-block-cl"></div>
+		            <div class="art-block-cr"></div>
+		            <div class="art-block-cc"></div>
+		            <div class="art-block-body">
+		                        <div class="art-blockheader">
+		                            <div class="l"></div>
+		                            <div class="r"></div>
+		                             <div class="t" style="color:white;">{{ auction.product.name }} - ${{ auction.product.cost }}</div>
+		                        </div>
+		                        <div class="art-blockcontent">
+		                            <div class="art-blockcontent-tl"></div>
+		                            <div class="art-blockcontent-tr"></div>
+		                            <div class="art-blockcontent-bl"></div>
+		                            <div class="art-blockcontent-br"></div>
+		                            <div class="art-blockcontent-tc"></div>
+		                            <div class="art-blockcontent-bc"></div>
+		                            <div class="art-blockcontent-cl"></div>
+		                            <div class="art-blockcontent-cr"></div>
+		                            <div class="art-blockcontent-cc"></div>
+		                            <div class="art-blockcontent-body">
+										<div style="background-color:white;text-align:center;">
+											<img src="{{ MEDIA_URL }}{{ auction.product.preview_image }}"
+										</div>
+										<h3 style="display:block;text-align:center;">{{ auction.duration }}</h3>
+		                        		<div align="center">
+		                        			<a href="#" class="art-button"> Bid </a>
+		                        		</div>
+										<div class="cleared"></div>
+		                            </div>
+		                        </div>
+		        		<div class="cleared"></div>
+		            </div>
+		        </div>
+			</td>
+		{% endfor %}
+	</tr>
+</table>
+{% endblock %}
