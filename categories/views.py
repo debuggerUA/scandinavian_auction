@@ -83,3 +83,8 @@ def add_category(request):
             send_notification(params)
             return HttpResponseRedirect('/admin/categories/')
     return render_to_response('admin/category_form.html',{'category_form':form,'edit':False},context_instance=RequestContext(request))
+
+@superuser_login_required
+def del_category(request,id):
+    Category.objects.get(id=id).delete()
+    return HttpResponseRedirect('/admin/categories/')

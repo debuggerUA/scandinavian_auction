@@ -45,9 +45,9 @@ $(function(){
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
 			<td style="padding:10px;">Product name</td>
-			<td style="padding:10px;">Price</td>
-			<td style="padding:10px;">Time left</td>
-			<td style="padding:10px;">Time delta</td>
+			<td style="padding:10px;">Start price</td>
+			<td style="padding:10px;">Duration</td>
+			<td style="padding:10px;">Start time</td>
 			<td style="padding:10px;">&nbsp;</td>
 		</tr>
 	</thead>
@@ -58,13 +58,13 @@ $(function(){
 				<a href="/admin/products/{{ auction.product.id }}/" >{{ auction.product.name }}</a>
 			</td>
 			<td>
-				{{ auction.price }}
+				{{ auction.start_price }}
 			</td>
 			<td>
-				{{ auction.time_left }}
+				{{ auction.duration }}
 			</td>
 			<td>
-				{{ auction.time_delta }}
+				{{ auction.start_time }}
 			</td>
 			<td align="center">
 				<a href="/admin/auctions/edit/{{ auction.id }}/" class="art-button">Edit</a>

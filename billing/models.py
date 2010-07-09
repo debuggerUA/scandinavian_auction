@@ -5,4 +5,4 @@ from django.contrib.auth.models import User
 
 class Bill(models.Model):
     uid=models.ForeignKey(User)
-    balance=models.FloatField()
+    bets=models.IntegerField()

@@ -20,7 +20,7 @@ This is HOME PAGE !
 		                        <div class="art-blockheader">
 		                            <div class="l"></div>
 		                            <div class="r"></div>
-		                             <div class="t" style="color:white;">{{ auction.product.name }} - ${{ auction.price }}</div>
+		                             <div class="t" style="color:white;">{{ auction.product.name }} - ${{ auction.product.cost }}</div>
 		                        </div>
 		                        <div class="art-blockcontent">
 		                            <div class="art-blockcontent-tl"></div>
@@ -36,9 +36,9 @@ This is HOME PAGE !
 										<div style="background-color:white;text-align:center;">
 											<img src="{{ MEDIA_URL }}{{ auction.product.preview_image }}"
 										</div>
-										<h3 style="display:block;text-align:center;">{{ auction.time_left }}</h3>
+										<h3 style="display:block;text-align:center;">{{ auction.duration }}</h3>
 		                        		<div align="center">
-		                        			<a href="makebid/{{ auction.id }}" class="art-button"> Make bid </a>
+		                        			<a href="#" class="art-button"> Bid </a>
 		                        		</div>
 										<div class="cleared"></div>
 		                            </div>

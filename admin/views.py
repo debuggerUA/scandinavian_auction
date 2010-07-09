@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from scandinavian_auction.products.forms import ProductForm
 from scandinavian_auction.products.models import Product
 from scandinavian_auction.auth.forms import LoginForm
-from scandinavian_auction.auction.models import Auction, Bids
+from scandinavian_auction.auction.models import Auction, Bid
 from scandinavian_auction.auction.forms import AuctionForm
 from scandinavian_auction.categories.models import Category
 from scandinavian_auction.billing.models import Bill
@@ -147,7 +147,7 @@ def add_auction(request):
         data = request.POST.copy()
         form=AuctionForm(data)
         if form.is_valid():
-            auction=Auction(start_time=data['start_time'],time_left=data['time_left'], product=Product.objects.get(id=int(data['product'])), price=data['price'], price_delta=data['price_delta'])
+            auction=Auction(time_left=data['time_left'], product=Product.objects.get(id=int(data['product'])), price=data['price'], time_delta=data['time_delta'])
             prod=Product.objects.get(id=int(data['product']))
             if prod.number > 0:
                 prod.number -= 1
@@ -185,12 +185,10 @@ def edit_auction(request,id):
         data = request.POST.copy()      
         form=AuctionForm(data,file_data)
         if form.is_valid():
-            auction.name=data['name']
-            auction.start_time=data['start_time']
             auction.time_left=data['time_left']
             auction.price=data['price']
             auction.product=data['product']
-            auction.price_delta=data['price_delta']
+            auction.time_delta=data['time_delta']
             auction.save()
             return HttpResponseRedirect('/admin/auctions/')
     return render_to_response('admin/auction_form.html',{'auction_form':form,'edit':True,'id':id},context_instance=RequestContext(request))

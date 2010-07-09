@@ -30,7 +30,7 @@ def registration(request):
             try:
                 user = User.objects.create_user(request.POST.get("login"), request.POST.get('email'), request.POST.get('password'))
                 user.save()
-                bill = Bill(uid=user, balance=0)
+                bill = Bill(uid=user, bets=0)
                 bill.save()
                 return HttpResponseRedirect("/")
             except:

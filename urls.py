@@ -3,8 +3,8 @@ from scandinavian_auction.admin.views import get_products, admin_login, admin_ma
     add_product, add_auction, get_auctions, del_auction, edit_auction, user_page
 from scandinavian_auction.auth.views import login, registration, log_out
 from scandinavian_auction.views import main
-from scandinavian_auction.products.views import products_list, show_product
-from scandinavian_auction.categories.views import categories_list_admin, category_show_admin, add_category, show_category, show_categories
+from scandinavian_auction.products.views import products_list, show_product, make_bid
+from scandinavian_auction.categories.views import categories_list_admin, category_show_admin, add_category, show_category, show_categories, del_category
 from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -48,13 +48,18 @@ urlpatterns = patterns('',
     (r'^admin/auctions/del/(\d+)/$',del_auction),
     (r'^admin/auctions/edit/(\d+)/$',edit_auction),
     (r'^admin/categories/$', categories_list_admin),
-    (r'^admin/categories/(\d+)', category_show_admin),
+    (r'^admin/categories/(\d+)/$', category_show_admin),
     (r'^admin/categories/add/$',add_category),
+    (r'^admin/categories/del/(\d+)/$',del_category),
     #end admin views
     
     #user pages
     (r'^user/$', user_page),
     #end user pages
+    
+    #bid urls
+    (r'^makebid/(\d+)/$', make_bid),
+    #end bid urls
     
     # Example:
     # (r'^auction/', include('auction.foo.urls')),

@@ -9,6 +9,6 @@
 	
 	<b>Username:</b> {{ user.username }}<br>
 	<b>Email:</b> {{ user.email }}<br>
-	<b>Bets:</b> {{ bill.bets }}<br>
+	<b>Balance:</b> {{ bill.balance }}<br>
 	<b>Bids:</b><br>
 </body>
