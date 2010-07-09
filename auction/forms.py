@@ -7,7 +7,7 @@ from django.forms.extras.widgets import SelectDateWidget
 class AuctionForm(ModelForm):
     class Meta:
         model = Auction
-        fields = ['start_time', 'duration', 'start_price', 'product']
+        fields = ['start_time', 'time_left', 'price', 'product', 'price_delta']
         widgets = {
             'start_time': SelectDateWidget(),
         }

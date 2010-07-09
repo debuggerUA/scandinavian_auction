@@ -77,7 +77,7 @@ def add_product(request):
             img.thumbnail((128, 128))
             outfile = StringIO()
             img.save(outfile,format="JPEG")
-            product=Product(name=data['name'],category=Category.objects.get(id=data['category']), cost=data['cost'],desc=data['desc'],image=simple_upload_file,preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue()))
+            product=Product(name=data['name'], number=data['number'], category=Category.objects.get(id=data['category']), cost=data['cost'],desc=data['desc'],image=simple_upload_file,preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue()))
             outfile.close()
             product.save()
             #creating notification email
@@ -131,6 +131,7 @@ def edit_product(request,id):
             product.name=data['name']
             product.cost=data['cost']
             product.desc=data['desc']
+            product.number=data['number']
             product.image=simple_upload_file
             product.preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue())
             outfile.close()
@@ -145,7 +146,13 @@ def add_auction(request):
         data = request.POST.copy()
         form=AuctionForm(data)
         if form.is_valid():
-            auction=Auction(start_time=data['start_time'],duration=data['duration'],product=Product.objects.get(id=int(data['product'])),start_price=data['start_price'])
+            auction=Auction(start_time=data['start_time'],time_left=data['time_left'], product=Product.objects.get(id=int(data['product'])), price=data['price'], price_delta=data['price_delta'])
+            prod=Product.objects.get(id=int(data['product']))
+            if prod.number > 0:
+                prod.number -= 1
+                prod.save()
+            else:
+                pass
             auction.save()
             return HttpResponseRedirect('/admin/auctions/')
     return render_to_response('admin/auction_form.html',{'auction_form':form,'edit':False},context_instance=RequestContext(request))
@@ -166,36 +173,26 @@ def get_auctions(request):
 
 @superuser_login_required
 def del_auction(request,id):
-    Product.objects.get(id=id).delete()
+    Auction.objects.get(id=id).delete()
     return HttpResponseRedirect('/admin/auctions/')
 
 @superuser_login_required
 def edit_auction(request,id):
-    product=Product.objects.get(id=id)
-    form=ProductForm(instance=product)
+    auction=Auction.objects.get(id=id)
+    form=AuctionForm(instance=auction)
     if request.method=='POST':
-        data = request.POST.copy()
-        img_file=request.FILES.get('image')
-        file_data= {'image':img_file}
-        print data
-        
-        form=ProductForm(data,file_data)
+        data = request.POST.copy()      
+        form=AuctionForm(data,file_data)
         if form.is_valid():
-            simple_upload_file=SimpleUploadedFile(img_file.name,img_file.read())
-            img_file.seek(0)
-            img=Image.open(img_file)
-            img.thumbnail((128, 128))
-            outfile = StringIO()
-            img.save(outfile,format="JPEG")
-            product.name=data['name']
-            product.cost=data['cost']
-            product.desc=data['desc']
-            product.image=simple_upload_file
-            product.preview_image=SimpleUploadedFile(img_file.name,outfile.getvalue())
-            outfile.close()
-            product.save()
-            return HttpResponseRedirect('/admin/products/')
-    return render_to_response('admin/product_form.html',{'product_form':form,'edit':True,'id':id},context_instance=RequestContext(request))
+            auction.name=data['name']
+            auction.start_time=data['start_time']
+            auction.time_left=data['time_left']
+            auction.price=data['price']
+            auction.product=data['product']
+            auction.price_delta=data['price_delta']
+            auction.save()
+            return HttpResponseRedirect('/admin/auctions/')
+    return render_to_response('admin/auction_form.html',{'auction_form':form,'edit':True,'id':id},context_instance=RequestContext(request))
 
 
 @superuser_login_required
