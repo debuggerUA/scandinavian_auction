@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.contrib import auth 
 from django.contrib.auth.models import User
 from scandinavian_auction.auth.forms import RegistrationForm
+from scandinavian_auction.billing.models import Bill
 
 def login(request):
     form=LoginForm()
@@ -29,6 +30,8 @@ def registration(request):
             try:
                 user = User.objects.create_user(request.POST.get("login"), request.POST.get('email'), request.POST.get('password'))
                 user.save()
+                bill = Bill(uid=user, balance=0)
+                bill.save()
                 return HttpResponseRedirect("/")
             except:
                 err_mess = 'This username is unavailable.'

@@ -89,6 +89,7 @@ INSTALLED_APPS = (
     'scandinavian_auction.products',
     'scandinavian_auction.auction',
     'scandinavian_auction.categories',
+    'scandinavian_auction.billing',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

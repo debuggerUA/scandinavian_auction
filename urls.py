@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from scandinavian_auction.admin.views import get_products, admin_login, admin_main, del_product, edit_product, get_product, get_users, del_user,\
-    add_product, add_auction, get_auctions, del_auction, edit_auction
+    add_product, add_auction, get_auctions, del_auction, edit_auction, user_page
 from scandinavian_auction.auth.views import login, registration, log_out
 from scandinavian_auction.views import main
 from scandinavian_auction.products.views import products_list, show_product
@@ -50,9 +50,11 @@ urlpatterns = patterns('',
     (r'^admin/categories/$', categories_list_admin),
     (r'^admin/categories/(\d+)', category_show_admin),
     (r'^admin/categories/add/$',add_category),
-    
-    
     #end admin views
+    
+    #user pages
+    (r'^user/$', user_page),
+    #end user pages
     
     # Example:
     # (r'^auction/', include('auction.foo.urls')),

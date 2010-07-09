@@ -12,6 +12,7 @@ from scandinavian_auction.auth.forms import LoginForm
 from scandinavian_auction.auction.models import Auction, Bids
 from scandinavian_auction.auction.forms import AuctionForm
 from scandinavian_auction.categories.models import Category
+from scandinavian_auction.billing.models import Bill
 import Image
 from django.core.mail import send_mail, EmailMessage
 import smtplib
@@ -225,3 +226,9 @@ def admin_login(request):
 def admin_main(request):
     return render_to_response('admin/main.html',{},context_instance=RequestContext(request))
 
+def user_page(request):
+    if request.user.is_authenticated():
+        usr = User.objects.get(id=request.user.id)
+        bill = Bill.objects.get(uid=usr.id)
+        return render_to_response('user.html', {'user': usr, 'bill': bill}, context_instance=RequestContext(request))
+    return HttpResponseRedirect('/')
