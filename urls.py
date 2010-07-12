@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^login/$',login),
     (r'^registration/$',registration),
     (r'^logout',log_out),
+    (r'^accounts/login/$',login),
     #end authorisation views
     
     #products views

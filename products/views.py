@@ -13,16 +13,7 @@ from django.contrib.auth.models import User
 from scandinavian_auction.billing.models import Bill  
 from scandinavian_auction.auction.models import Auction, Bid
 import datetime, time
-
-
-def user_login_required(func):
-    @wraps(func)
-    def check(request,*args,**kwargs):
-        if request.user.is_authenticated:
-            return func(request,*args,**kwargs)
-        else:
-            return HttpResponseRedirect('/login')
-    return check
+from django.contrib.auth.decorators import login_required
 
 def products_list(request):
     products_list = Product.objects.all()
@@ -41,7 +32,7 @@ def show_product(request,id):
     p=Product.objects.get(id=id)
     return render_to_response('product_form.html',{'product':p},context_instance=RequestContext(request))
 
-@user_login_required
+@login_required()
 def make_bid(request,id):
     user = User.objects.get(id=request.user.id)
     bill = Bill.objects.get(uid=user.id)
