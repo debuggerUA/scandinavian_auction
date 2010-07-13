@@ -1,0 +1,15 @@
+<head>
+	<title>
+		{{ auction.product.name }} auction
+		</title>
+	</head>
+
+<body>
+	<a href="/">Main</a> <a href="/categories">Categories</a> {% if user.is_authenticated %} <a href="/user/">My cabinet</a>{% endif %}<br><br><br>
+	<b>Name: </b>{{ auction.product.name }}<br>
+	<img src="{{ MEDIA_URL }}{{ auction.product.preview_image }}"/><br>
+	<b>Current price: </b>{{ auction.price }}<br>
+	<b>Time left: </b>{{ auction.time_left }}<br>
+	<b>Time delta: </b>{{ auction.time_delta }}<br>
+	<a href="/makebid/{{ auction.id }}/">Make bid</a>
+</body>

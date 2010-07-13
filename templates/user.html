@@ -1,14 +1,15 @@
 <head>
-	<title>
-		{{ user.name }}
-		</title>
+	<title>{{ user.name }}</title>
 	</head>
 
 <body>
-	<a href='/'>Main</a> <a href='/categories'>Categories</a><br><br>
+	<a href="/">Main</a> <a href="/categories">Categories</a><br><br>
 	
 	<b>Username:</b> {{ user.username }}<br>
 	<b>Email:</b> {{ user.email }}<br>
 	<b>Bets:</b> {{ bill.bets }}<br>
-	<b>Bids:</b><br>
+	<b>My latest bids:</b><br>
+	{% for bid in bids %}
+	<a href="/products/{{bid.auction.product.id}}/">{{ bid.auction.product }}</a><br>
+	{% endfor %}
 </body>

@@ -49,7 +49,7 @@
                 	<div class="r"></div>
                 	<ul class="art-menu">
                 		<li>
-                			<a href="/auctions/" class="active"><span class="l"></span><span class="r"></span><span class="t">Auctions</span></a>
+                			<a href="/" class="active"><span class="l"></span><span class="r"></span><span class="t">Home</span></a>
                 		</li>
                 		<li>
                 			<a href="/categories/"><span class="l"></span><span class="r"></span><span class="t">Categories</span></a>

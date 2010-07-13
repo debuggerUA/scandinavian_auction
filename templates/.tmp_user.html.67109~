@@ -1,0 +1,17 @@
+<head>
+	<title>
+		{{ user.name }}
+		</title>
+	</head>
+
+<body>
+	<a href='/'>Main</a> <a href='/categories'>Categories</a><br><br>
+	
+	<b>Username:</b> {{ user.username }}<br>
+	<b>Email:</b> {{ user.email }}<br>
+	<b>Bets:</b> {{ bill.bets }}<br>
+	<b>My auctions:</b><br>
+	{% for auction in auctions.object_list %}
+	<a href="#">{{ auction.product.name }}</a><br>
+	{% endfor %}
+</body>

@@ -29,8 +29,9 @@ def products_list(request):
     return render_to_response('products.html',{'products':products},context_instance=RequestContext(request))
 
 def show_product(request,id):
-    p=Product.objects.get(id=id)
-    return render_to_response('product_form.html',{'product':p},context_instance=RequestContext(request))
+    p = Product.objects.get(id=id)
+    auction = Auction.objects.get(product=p)
+    return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
 
 @login_required()
 def make_bid(request,id):
@@ -38,7 +39,7 @@ def make_bid(request,id):
     bill = Bill.objects.get(uid=user.id)
     auction = Auction.objects.get(id=id)
     if bill.bets > 0:
-        bid = Bid(user=user, time=datetime.datetime.now())
+        bid = Bid(user=user, time=datetime.datetime.now(), auction=auction)
         bid.save()
         secs = auction.time_left.hour*3600 + auction.time_left.minute*60 + auction.time_left.second
         secs_delta = auction.time_delta.second

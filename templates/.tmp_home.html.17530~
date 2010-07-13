@@ -1,6 +1,7 @@
 {% extends "main.html" %}
 
 {% block content %}
+This is HOME PAGE !
 <table>
 	<tr>
 		{% for auction in auctions %}

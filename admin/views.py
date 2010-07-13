@@ -228,5 +228,6 @@ def user_page(request):
     if request.user.is_authenticated():
         usr = User.objects.get(id=request.user.id)
         bill = Bill.objects.get(uid=usr.id)
-        return render_to_response('user.html', {'user': usr, 'bill': bill}, context_instance=RequestContext(request))
+        mybids = Bid.objects.filter(user=request.user.id)
+        return render_to_response('user.html', {'user': usr, 'bill': bill, 'bids': mybids}, context_instance=RequestContext(request))
     return HttpResponseRedirect('/')
