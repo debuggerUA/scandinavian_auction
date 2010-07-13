@@ -39,8 +39,7 @@ def registration(request):
     return render_to_response("registration_form.html", {'form' : form, 'errors': form.errors, },context_instance=RequestContext(request))
 
 def log_out(request):
-    #auth.logout(request)
-    logout(request)
+    auth.logout(request)
     return HttpResponseRedirect("/")
     
     
