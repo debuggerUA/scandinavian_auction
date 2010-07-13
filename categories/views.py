@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.models import User
+from scandinavian_auction.products.models import Product
 from scandinavian_auction.auth.forms import LoginForm
 from scandinavian_auction.categories.forms import CategoryForm
 from scandinavian_auction.categories.models import Category
@@ -45,7 +46,8 @@ def category_show_admin(request,id):
 
 def show_category(request,id):
     cat = Category.objects.get(id=id)
-    return render_to_response('category.html', {'category': cat}, context_instance=RequestContext(request))
+    products = Product.objects.filter(category=cat)
+    return render_to_response('category.html', {'category': cat, 'products': products}, context_instance=RequestContext(request))
 
 def show_categories(request):
     categories_list = Category.objects.all()
