@@ -147,7 +147,7 @@ def add_auction(request):
         data = request.POST.copy()
         form=AuctionForm(data)
         if form.is_valid():
-            auction=Auction(time_left=data['time_left'], product=Product.objects.get(id=int(data['product'])), price=data['price'], time_delta=data['time_delta'])
+            auction=Auction(time_left=data['time_left'], product=Product.objects.get(id=int(data['product'])), price=data['price'], time_delta=data['time_delta'], is_active=True)
             prod=Product.objects.get(id=int(data['product']))
             if prod.number > 0:
                 prod.number -= 1
