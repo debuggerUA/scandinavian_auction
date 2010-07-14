@@ -20,15 +20,11 @@ class dbThread(threading.Thread):
             rows = curr.fetchall()
             for row in rows:
                 time_left_sec = row[1].hour*3600 + row[1].minute*60 + row[1].second
-                #print "Time left in DB:"
-                #print time_left_sec
                 if time_left_sec > 0:
                     time_left_sec -= 1
                     new_time_left = datetime.time(time_left_sec/3600, (time_left_sec % 3600)/60, time_left_sec % 60)
                     curr.execute('UPDATE auction_auction SET time_left=%s WHERE id=%s', (new_time_left, row[0]))
                     conn.commit()
-                    #print "Time left new:"
-                    #print new_time_left
                 else:
                     curr.execute('UPDATE auction_auction SET is_active=FALSE WHERE id=%s', (row[0],))
                     conn.commit()
