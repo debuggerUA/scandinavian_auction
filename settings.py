@@ -36,7 +36,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = 'C:/Work/scandinavian_auction/media'
+MEDIA_ROOT = '/home/debugger/Work/scandinavian_auction/scandinavian_auction/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -51,13 +51,6 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'b7o&a9w*r$soez&$5lc)_=69km$3f2qyx-yc_786ef9w^=pfvk'
 
-#Email setup for notifications
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'debugger88@gmail.com'
-EMAIL_HOST_PASSWORD = 'd534fdgg'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'debugger88@gmail.com'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -75,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'scandinavian_auction.urls'
 
 TEMPLATE_DIRS = (
-    'C:/Work/scandinavian_auction/templates',
+    '/home/debugger/Work/scandinavian_auction/scandinavian_auction/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -99,6 +92,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
 )
 
-STATIC_DOC_ROOT = 'C:/Work/scandinavian_auction/media'
+STATIC_DOC_ROOT = '/home/debugger/Work/scandinavian_auction/scandinavian_auction/media'
 
 

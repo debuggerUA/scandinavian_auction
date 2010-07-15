@@ -10,8 +10,6 @@ work = True
 
 class dbThread(threading.Thread):
     def run(self):
-        llogin = 'auction'
-        ppassw = 'auction'
         conn = connect("dbname=AuctionDB user=auction password=auction")
         curr = conn.cursor()
         while work:
