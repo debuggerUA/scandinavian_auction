@@ -16,7 +16,6 @@ def aj_update_main(request):
     prices_array = []
     for auction in auctions:
         id_hash_sum += auction.id
-        #time_left_array.append(auction.time_left.hour*3600 + auction.time_left.minute*60 + auction.time_left.second)
         time_left_array.append(auction.time_left.__str__())
         prices_array.append(auction.price)
     data = {}

@@ -25,30 +25,6 @@
 			});
 		});
 	});
-	
-	function aj_upd()
-	{
-		var req_url = "/aj_update_main";
-			$.getJSON(req_url,function(data)
-			{
-				i = 0;
-				for(price_num in data["prices_array"])
-				{
-					id_str = "#div_name_price_" + i;
-					i++;
-					$(id_str).html(data["prices_array"][price_num]);
-				}
-				i = 0;
-				for(time_num in data["time_left_array"])
-				{
-					id_str = "#time_left_" + i;
-					i++;
-					$(id_str).html(data["time_left_array"][time_num]);
-				}
-			});
-	}
-	setInterval(aj_upd, 1000);
-	
 </script>
 <table>
 	<tr>
