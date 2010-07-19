@@ -8,19 +8,15 @@
 			var req_url = "/aj_update_main";
 			$.getJSON(req_url,function(data)
 			{
-				i = 0;
+				var i = 0;
 				for(price_num in data["prices_array"])
 				{
-					id_str = "#div_name_price_" + i;
-					i++;
-					$(id_str).html(data["prices_array"][price_num]);
-				}
-				i = 0;
-				for(time_num in data["time_left_array"])
-				{
+					var id_str = "#div_name_price_" + i;
+					var htmlstr = "" + data["products_array"][price_num] + " - $" + data["prices_array"][price_num];
+					$(id_str).html(htmlstr);
 					id_str = "#time_left_" + i;
+					$(id_str).html(data["time_left_array"][price_num]);
 					i++;
-					$(id_str).html(data["time_left_array"][time_num]);
 				}
 			});
 		});
@@ -31,19 +27,15 @@
 		var req_url = "/aj_update_main";
 			$.getJSON(req_url,function(data)
 			{
-				i = 0;
+				var i = 0;
 				for(price_num in data["prices_array"])
 				{
-					id_str = "#div_name_price_" + i;
-					i++;
-					$(id_str).html(data["prices_array"][price_num]);
-				}
-				i = 0;
-				for(time_num in data["time_left_array"])
-				{
+					var id_str = "#div_name_price_" + i;
+					var htmlstr = "" + data["products_array"][price_num] + " - $" + data["prices_array"][price_num];
+					$(id_str).html(htmlstr);
 					id_str = "#time_left_" + i;
+					$(id_str).html(data["time_left_array"][price_num]);
 					i++;
-					$(id_str).html(data["time_left_array"][time_num]);
 				}
 			});
 	}

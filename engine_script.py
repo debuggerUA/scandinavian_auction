@@ -10,7 +10,7 @@ work = True
 
 class dbThread(threading.Thread):
     def run(self):
-        conn = connect("dbname=AuctionDB user=auction password=auction")
+        conn = connect(database="AuctionDB", user="auction", password="auction")
         curr = conn.cursor()
         while work:
             querry = 'SELECT id, time_left FROM auction_auction WHERE is_active=TRUE'
