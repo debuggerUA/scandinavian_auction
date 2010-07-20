@@ -6,18 +6,32 @@ import datetime, time
 import threading
 from time import sleep
 
+
 work = True
+
+
+try:
+    conn = connect(database="AuctionDB", user="auction", password="auction")
+    curr = conn.cursor()
+except:
+    print "Database connection Error!"
+    work = False
+
 
 def endAuction(id, conn, curr):
     querry = 'SELECT id, user_id, auction_id FROM auction_bid WHERE auction_id=' + id + ' ORDER BY id'
     curr.execute(querry)
     rows = curr.fetchall()
+    querry = 'SELECT email from auth_user WHERE id=' + rows[0][1]
+    curr.execute(querry)
+    row_usr = curr.fetchall()
+    #params = {'to': row_usr[0][0], 'type': 4}
+    #send_notification(params)
+    
     
 
 class dbThread(threading.Thread):
     def run(self):
-        conn = connect(database="AuctionDB", user="auction", password="auction")
-        curr = conn.cursor()
         while work:
             querry = 'SELECT id, time_left FROM auction_auction WHERE is_active=TRUE'
             curr.execute(querry)
