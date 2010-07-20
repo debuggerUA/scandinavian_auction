@@ -8,6 +8,12 @@ from time import sleep
 
 work = True
 
+def endAuction(id, conn, curr):
+    querry = 'SELECT id, user_id, auction_id FROM auction_bid WHERE auction_id=' + id + ' ORDER BY id'
+    curr.execute(querry)
+    rows = curr.fetchall()
+    
+
 class dbThread(threading.Thread):
     def run(self):
         conn = connect(database="AuctionDB", user="auction", password="auction")
@@ -26,6 +32,7 @@ class dbThread(threading.Thread):
                 else:
                     curr.execute('UPDATE auction_auction SET is_active=FALSE WHERE id=%s', (row[0],))
                     conn.commit()
+                    endAuction(row[0], conn, curr)
             sleep(1)
 
 
