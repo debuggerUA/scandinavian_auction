@@ -30,5 +30,8 @@ def show_auctions(request):
     return render_to_response('auctions.html',{'auctions':auctions},context_instance=RequestContext(request))
 
 def show_auction(request,id):
-    auction = Auction.objects.get(id=id)
-    return render_to_response('auction.html', {'auction': auction}, context_instance=RequestContext(request))
+    try:
+        auction = Auction.objects.get(id=id)
+        return render_to_response('auction.html', {'auction': auction}, context_instance=RequestContext(request))
+    except Auction.DoesNotExist:
+        return HttpResponseRedirect('/auctions/')

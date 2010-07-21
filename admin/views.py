@@ -19,7 +19,6 @@ import smtplib
 from email.MIMEText import MIMEText
 from StringIO import StringIO
 from functools import wraps
-from scandinavian_auction.views import send_notification
 
 def superuser_login_required(func):
     @wraps(func)
@@ -115,8 +114,12 @@ def get_products(request):
 
 @superuser_login_required
 def get_product(request,id):
-    p=Product.objects.get(id=id)
-    return render_to_response('admin/product.html',{'product':p},context_instance=RequestContext(request))
+    try:
+        p=Product.objects.get(id=id)
+        auc = Auction.objects.filter(is_active=True, product=p)
+        return render_to_response('admin/product.html',{'product':p},context_instance=RequestContext(request))
+    except DoesNotExist:
+        return HttpResponseRedirect('/')
 
 @superuser_login_required
 def del_product(request,id):
@@ -241,5 +244,20 @@ def user_page(request):
         usr = User.objects.get(id=request.user.id)
         bill = Bill.objects.get(uid=usr.id)
         mybids = Bid.objects.filter(user=request.user.id)
-        return render_to_response('user.html', {'user': usr, 'bill': bill, 'bids': mybids}, context_instance=RequestContext(request))
+        auct_won = Auction.objects.filter(won_by=request.user.id)
+        return render_to_response('user.html', {'user': usr, 'bill': bill, 'bids': mybids, 'auc_won': auct_won}, context_instance=RequestContext(request))
     return HttpResponseRedirect('/')
+
+def buy_it(request, id):
+    try:
+        auc = Auction.objects.get(id=id)
+    except DoesNotExist:
+        return HttpResponseRedirect('/')
+    if auc.won_by.id == request.user.id:
+        #Биллинг и всё такое :)
+        #будем считать, что купили успешно
+        auc_bids = Bid.objects.filter(auction=auc).delete()
+        auc.delete()
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/user/')

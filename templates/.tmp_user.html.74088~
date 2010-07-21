@@ -12,14 +12,12 @@
 		<tr>
 			<b>My latest bids:</b><br>
 			{% for bid in bids %}
-			<li><a href="/products/{{bid.auction.product.id}}/">{{ bid.auction.product }}</a></li>
+			<a href="/products/{{bid.auction.product.id}}/">{{ bid.auction.product }}</a><br>
 			{% endfor %}
 		</tr>
 		<tr>
 			<b>Auctions I've won:</b><br>
-			{% for auc in auc_won %}
-			<li><a href="/products/{{auc.product.id}}/">{{ auc.product.name }}</a> <a href="/buy/{{ auc.id }}/">Get it!</a></li>
-			{% endfor %}
+			
 		</tr>
 	</table>
 </body>

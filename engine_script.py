@@ -18,17 +18,13 @@ except:
     work = False
 
 
-def endAuction(id, conn, curr):
-    querry = 'SELECT id, user_id, auction_id FROM auction_bid WHERE auction_id=' + id + ' ORDER BY id'
-    curr.execute(querry)
-    rows = curr.fetchall()
-    querry = 'SELECT email from auth_user WHERE id=' + rows[0][1]
-    curr.execute(querry)
-    row_usr = curr.fetchall()
-    #params = {'to': row_usr[0][0], 'type': 4}
-    #send_notification(params)
-    
-    
+def endAuction(id, conn, curr): 
+    curr.execute("SELECT id, user_id FROM auction_bid WHERE auction_id=%s ORDER BY id DESC", (id,))
+    bid_row = curr.fetchone()
+    print bid_row[0]
+    curr.execute("UPDATE auction_auction SET won_by_id=%s WHERE id=%s", (bid_row[1], id))
+    conn.commit()
+    print "Auction ended."
 
 class dbThread(threading.Thread):
     def run(self):
@@ -58,7 +54,7 @@ class djangoThread(threading.Thread):
 def _main():
     dbThread().start()
     djangoThread().start()
-    
+
 
 if __name__ == '__main__':
     _main()

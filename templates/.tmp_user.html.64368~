@@ -18,7 +18,7 @@
 		<tr>
 			<b>Auctions I've won:</b><br>
 			{% for auc in auc_won %}
-			<li><a href="/products/{{auc.product.id}}/">{{ auc.product.name }}</a> <a href="/buy/{{ auc.id }}/">Get it!</a></li>
+			<li><a href="/products/{{auc.product.id}}/">{{ auc.product.name }}</a> <a href="#">Get it!</a></li>
 			{% endfor %}
 		</tr>
 	</table>

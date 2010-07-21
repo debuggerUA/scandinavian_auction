@@ -29,15 +29,21 @@ def products_list(request):
     return render_to_response('products.html',{'products':products},context_instance=RequestContext(request))
 
 def show_product(request,id):
-    p = Product.objects.get(id=id)
-    auction = Auction.objects.get(product=p)
-    return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
+    try:
+        p = Product.objects.get(id=id)
+        auction = Auction.objects.get(product=p)
+        return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
+    except Product.DoesNotExist:
+        return HttpResponseRedirect('/products/')
 
 @login_required()
 def make_bid(request,id):
     user = User.objects.get(id=request.user.id)
     bill = Bill.objects.get(uid=user.id)
-    auction = Auction.objects.get(id=id)
+    try:
+        auction = Auction.objects.get(id=id)
+    except Auction.DoesNotExist:
+        return HttpResponseRedirect('/')
     if bill.bets > 0:
         bid = Bid(user=user, time=datetime.datetime.now(), auction=auction)
         bid.save()

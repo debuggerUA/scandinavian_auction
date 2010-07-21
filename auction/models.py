@@ -10,6 +10,7 @@ class Auction(models.Model):
     product=models.ForeignKey(Product)
     time_delta=models.TimeField()
     is_active=models.BooleanField()
+    won_by=models.ForeignKey(User, null=True)
     class Meta:
         get_latest_by = 'id'
 
