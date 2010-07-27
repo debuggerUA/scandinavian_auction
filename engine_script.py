@@ -48,11 +48,16 @@ class dbThread(threading.Thread):
 
 class djangoThread(threading.Thread):
     def run(self):
-        system("python manage.py runserver")
+        system("python manage.py runserver 8000")
+
+class tornadoThread(threading.Thread):
+    def run(self):
+        system("python tornading.py")
 
 
 def _main():
     dbThread().start()
+    tornadoThread().start()
     djangoThread().start()
 
 

@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block page_name %}Autorization{% endblock %}
+{% block content %}
+<form action="" method="post">
+	<table>
+		{{ form }}
+		<tr><td><input type="submit" value="Sign In"></td></tr>
+	</table>
+</form>
+<a href="/registration/">Sign Up</a>
+{{ val }}
+{% endblock %}

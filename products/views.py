@@ -43,7 +43,7 @@ def make_bid(request,id):
     try:
         auction = Auction.objects.get(id=id)
     except Auction.DoesNotExist:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect("/")
     if bill.bets > 0:
         bid = Bid(user=user, time=datetime.datetime.now(), auction=auction)
         bid.save()
@@ -55,6 +55,6 @@ def make_bid(request,id):
         auction.save()
         bill.bets -= 1
         bill.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect("/")
     else:
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect("/")

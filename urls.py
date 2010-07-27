@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from scandinavian_auction.admin.views import get_products, admin_login, admin_main, del_product, edit_product, get_product, get_users, del_user,\
     add_product, add_auction, get_auctions, del_auction, edit_auction, user_page, buy_it
 from scandinavian_auction.auth.views import login, registration, log_out
-from scandinavian_auction.views import main ,aj_update_main
+from scandinavian_auction.views import main
 from scandinavian_auction.auction.views import show_auction, show_auctions
 from scandinavian_auction.products.views import products_list, show_product, make_bid
 from scandinavian_auction.categories.views import categories_list_admin, category_show_admin, add_category, show_category, show_categories, del_category
@@ -73,7 +73,7 @@ urlpatterns = patterns('',
     #end bid urls
     
     #json update
-    (r'^aj_update_main/$', aj_update_main),
+    #aj_update_main/$', aj_update_main),
     #end json update
     
     # Example:

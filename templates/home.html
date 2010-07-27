@@ -5,7 +5,7 @@
 	var h_sum = -1;
 	function aj_upd()
 	{
-		var req_url = "/aj_update_main";
+		var req_url = "/aj_update_main/";
 			$.getJSON(req_url,function(data)
 			{
 				if (h_sum != -1 && h_sum != data["id_hash_sum"])

@@ -1,7 +1,8 @@
-#Wed Jul 14 10:49:35 EEST 2010
+#Tue Jul 27 10:36:50 EEST 2010
 eclipse.preferences.version=1
 encoding//admin/views.py=utf-8
 encoding//auction/models.py=utf-8
 encoding//billing/models.py=utf-8
 encoding/engine_script.py=utf-8
 encoding/settings.py=utf-8
+encoding/tornading.py=utf-8

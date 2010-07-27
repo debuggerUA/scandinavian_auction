@@ -1,6 +1,6 @@
 {% extends "admin/main.html" %}
 
-{% block page_name %}Product list{% endblock %}
+{% block page_name %}Categories list{% endblock %}
 
 {% block content %}
 <style>
@@ -38,37 +38,33 @@ $(function(){
 });
 </script>
 
-<a class="art-button" href="/admin/products/add/">Add product</a>
+<a class="art-button" href="/admin/categories/add/">Add category</a>
 
 
 <table class="mytable" style="width:100%;">
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
 			<td style="padding:10px;">Name</td>
-			<td style="padding:10px;">Cost</td>
-			<td style="padding:10px;">Image</td>
 			<td style="padding:10px;">Description</td>
+			<td style="padding:10px;">Image</td>
 			<td style="padding:10px;">&nbsp;</td>
 		</tr>
 	</thead>
 	<tbody>
-	{% for product in products.object_list %}
+	{% for category in categories.object_list %}
 		<tr>
 			<td>
-				<a href="/admin/products/{{ product.id }}/" >{{ product.name }}</a>
-			</td>
-			<td>
-				{{ product.cost }}
+				<a href="/admin/categories/{{ category.id }}/" >{{ category.name }}</a>
 			</td>
 			<td align="center">
-				<img src="{{ MEDIA_URL }}{{ product.preview_image }}"/>
+				<img src="{{ MEDIA_URL }}{{ category.preview_image }}"/>
 			</td>
 			<td>
-				{{ product.desc }}
+				{{ category.desc }}
 			</td>
 			<td align="center">
-				<a href="/admin/products/edit/{{ product.id }}/" class="art-button">Edit</a>
-				<a href="/admin/products/del/{{ product.id }}/" class="art-button">Remove</a>
+				<a href="/admin/categories/edit/{{ category.id }}/" class="art-button">Edit</a>
+				<a href="/admin/categories/del/{{ category.id }}/" class="art-button">Remove</a>
 			</td>
 		</tr>
 	{% endfor %}
@@ -76,16 +72,16 @@ $(function(){
 </table>
 <div class="pagination" align="center" style="font-size:16px;">
     <span class="step-links">
-        {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}">&lt;&lt;</a>
+        {% if categories.has_previous %}
+            <a href="?page={{ categories.previous_page_number }}">&lt;&lt;</a>
         {% endif %}
 
         <span class="current">
-            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+            Page {{ categories.number }} of {{ categories.paginator.num_pages }}.
         </span>
 
-        {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}/">&gt;&gt;</a>
+        {% if categories.has_next %}
+            <a href="?page={{ categories.next_page_number }}">&gt;&gt;</a>
         {% endif %}
     </span>
 </div>

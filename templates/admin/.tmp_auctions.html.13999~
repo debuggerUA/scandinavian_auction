@@ -1,6 +1,6 @@
 {% extends "admin/main.html" %}
 
-{% block page_name %}Product list{% endblock %}
+{% block page_name %}Auction list{% endblock %}
 
 {% block content %}
 <style>
@@ -38,37 +38,37 @@ $(function(){
 });
 </script>
 
-<a class="art-button" href="/admin/products/add/">Add product</a>
+<a class="art-button" href="/admin/auctions/add/">Add auction</a>
 
 
 <table class="mytable" style="width:100%;">
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
-			<td style="padding:10px;">Name</td>
-			<td style="padding:10px;">Cost</td>
-			<td style="padding:10px;">Image</td>
-			<td style="padding:10px;">Description</td>
+			<td style="padding:10px;">Product name</td>
+			<td style="padding:10px;">Price</td>
+			<td style="padding:10px;">Time left</td>
+			<td style="padding:10px;">Time delta</td>
 			<td style="padding:10px;">&nbsp;</td>
 		</tr>
 	</thead>
 	<tbody>
-	{% for product in products.object_list %}
+	{% for auction in auctions.object_list %}
 		<tr>
 			<td>
-				<a href="/admin/products/{{ product.id }}/" >{{ product.name }}</a>
+				<a href="/admin/products/{{ auction.product.id }}/" >{{ auction.product.name }}</a>
 			</td>
 			<td>
-				{{ product.cost }}
-			</td>
-			<td align="center">
-				<img src="{{ MEDIA_URL }}{{ product.preview_image }}"/>
+				{{ auction.price }}
 			</td>
 			<td>
-				{{ product.desc }}
+				{{ auction.time_left }}
+			</td>
+			<td>
+				{{ auction.time_delta }}
 			</td>
 			<td align="center">
-				<a href="/admin/products/edit/{{ product.id }}/" class="art-button">Edit</a>
-				<a href="/admin/products/del/{{ product.id }}/" class="art-button">Remove</a>
+				<a href="/admin/auctions/edit/{{ auction.id }}/" class="art-button">Edit</a>
+				<a href="/admin/auctions/del/{{ auction.id }}/" class="art-button">Remove</a>
 			</td>
 		</tr>
 	{% endfor %}
@@ -76,16 +76,16 @@ $(function(){
 </table>
 <div class="pagination" align="center" style="font-size:16px;">
     <span class="step-links">
-        {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}">&lt;&lt;</a>
+        {% if auctions.has_previous %}
+            <a href="?page={{ auctions.previous_page_number }}">&lt;&lt;</a>
         {% endif %}
 
         <span class="current">
-            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+            Page {{ auctions.number }} of {{ auctions.paginator.num_pages }}.
         </span>
 
-        {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}/">&gt;&gt;</a>
+        {% if auctions.has_next %}
+            <a href="?page={{ auctions.next_page_number }}">&gt;&gt;</a>
         {% endif %}
     </span>
 </div>

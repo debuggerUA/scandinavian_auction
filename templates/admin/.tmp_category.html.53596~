@@ -1,0 +1,24 @@
+{% extends "admin/main.html" %}
+
+{% block page_name %}Category{% endblock %}
+
+{% block content %}
+
+<table>
+	<tr>
+		<td align="right"><b>Name:</b></td>
+		<td>{{ category.name }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Desc:</b></td>
+		<td>{{ category.desc }}</td>
+	</tr>
+	<tr>
+		<td><b>Image:</b></td>
+		<td><img src="{{ MEDIA_URL }}{{ category.image }}" style="border:2px solid #ffffff;"/></td>
+	</tr>
+</table>
+
+
+
+{% endblock %}

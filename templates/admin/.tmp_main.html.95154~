@@ -42,22 +42,22 @@
                 	<div class="r"></div>
                 	<ul class="art-menu">
                 		<li>
-                			<a href="/admin/"  ><span class="l"></span><span class="r"></span><span class="t">Home</span></a>
+                			<a href="/admin"  ><span class="l"></span><span class="r"></span><span class="t">Home</span></a>
                 		</li>
                         <li>
-                        	<a href="/admin/users/" ><span class="l"></span><span class="r"></span><span class="t">Users</span></a>
+                        	<a href="/admin/users" ><span class="l"></span><span class="r"></span><span class="t">Users</span></a>
                         </li>
                         <li>
-                        	<a href="/admin/products/" ><span class="l"></span><span class="r"></span><span class="t">Products</span></a>
+                        	<a href="/admin/products" ><span class="l"></span><span class="r"></span><span class="t">Products</span></a>
                         </li>
                         <li>
-                        	<a href="/admin/auctions/"><span class="l"></span><span class="r"></span><span class="t">Auctions</span></a>
+                        	<a href="/admin/auctions"><span class="l"></span><span class="r"></span><span class="t">Auctions</span></a>
                         </li>
 						<li>
-                        	<a href="/admin/categories/"><span class="l"></span><span class="r"></span><span class="t">Categories</span></a>
+                        	<a href="/admin/categories"><span class="l"></span><span class="r"></span><span class="t">Categories</span></a>
                         </li>
                         <li>
-                        	<a href="/admin/del_sess/"><span class="l"></span><span class="r"></span><span class="t">Logout</span></a>
+                        	<a href="/admin/del_sess"><span class="l"></span><span class="r"></span><span class="t">Logout</span></a>
                         </li>
                 	</ul>
                 </div>

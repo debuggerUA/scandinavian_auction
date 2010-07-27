@@ -26,10 +26,10 @@ def superuser_login_required(func):
         if request.user.is_superuser:
             return func(request,*args,**kwargs)
         else:
-            return HttpResponseRedirect('/admin/login')
+            return HttpResponseRedirect('/admin/login/')
     return check
 
-#Email notification
+#Email notification - ПЕРЕПИСАТЬ НАФИК!11!1
 def send_notification(params):
     #Notification types: 1-new product, 2-new bid, 3-new category, 4-auction won
     email_from = 'debugger88@gmail.com'
@@ -123,7 +123,10 @@ def get_product(request,id):
 
 @superuser_login_required
 def del_product(request,id):
-    Product.objects.get(id=id).delete()
+    try:
+        Product.objects.get(id=id).delete()
+    except Product.DoesNotExist:
+        pass
     return HttpResponseRedirect('/admin/products/')
 
 @superuser_login_required
@@ -189,7 +192,10 @@ def get_auctions(request):
 
 @superuser_login_required
 def del_auction(request,id):
-    Auction.objects.get(id=id).delete()
+    try:
+        Auction.objects.get(id=id).delete()
+    except Auction.DoesNotExist:
+        pass
     return HttpResponseRedirect('/admin/auctions/')
 
 @superuser_login_required
@@ -216,7 +222,10 @@ def get_users(request):
 
 @superuser_login_required
 def del_user(request,id):
-    User.objects.get(id=id).delete()
+    try:
+        User.objects.get(id=id).delete()
+    except User.DoesNotExist:
+        pass
     return HttpResponseRedirect('/admin/users/')
     
 
