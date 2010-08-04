@@ -5,7 +5,9 @@ unittest). These will both pass when you run "manage.py test".
 Replace these with more appropriate tests for your application.
 """
 
+import unittest
 from django.test import TestCase
+from django.test.client import Client
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
@@ -13,6 +15,14 @@ class SimpleTest(TestCase):
         Tests that 1 + 1 always equals 2.
         """
         self.failUnlessEqual(1 + 1, 2)
+
+class AuthTest(TestCase):
+    def registration_test(self):
+        """
+        Registration test
+        """
+        c = Client()
+        
 
 __test__ = {"doctest": """
 Another way to test that 1 + 1 is equal to 2.

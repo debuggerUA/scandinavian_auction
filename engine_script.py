@@ -54,10 +54,15 @@ class tornadoThread(threading.Thread):
     def run(self):
         system("python tornading.py")
 
+class tornadoThreadTwo(threading.Thread):
+    def run(self):
+        system("python tornading2.py")
+
 
 def _main():
     dbThread().start()
     tornadoThread().start()
+    #tornadoThreadTwo().start()
     djangoThread().start()
 
 

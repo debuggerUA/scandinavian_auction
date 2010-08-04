@@ -11,6 +11,7 @@ from scandinavian_auction.products.models import Product
 from scandinavian_auction.auth.forms import LoginForm
 from scandinavian_auction.auction.models import Auction, Bid
 from scandinavian_auction.auction.forms import AuctionForm
+from scandinavian_auction.auth.forms import AdminAddUserForm
 from scandinavian_auction.categories.models import Category
 from scandinavian_auction.billing.models import Bill
 import Image
@@ -227,6 +228,17 @@ def del_user(request,id):
     except User.DoesNotExist:
         pass
     return HttpResponseRedirect('/admin/users/')
+
+def add_user(request):
+    form = AdminAddUserForm()
+    if request.method == 'POST':
+        data = request.POST.copy()
+        form = AdminAddUserForm(data)
+        if form.is_valid():
+            user = User(username = data['username'], password = data['password'], email = data['email'], is_staff = data['is_staff'], is_active = data['is_active'], is_superuser = data['is_superuser'])
+            user.save()
+            return HttpResponseRedirect("/admin/users/")
+    return render_to_response('admin/user_form.html', {'user_form': form, 'edit': False}, context_instance=RequestContext(request))
     
 
 def admin_login(request):

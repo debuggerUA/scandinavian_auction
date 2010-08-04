@@ -31,8 +31,11 @@ def products_list(request):
 def show_product(request,id):
     try:
         p = Product.objects.get(id=id)
-        auction = Auction.objects.get(product=p)
-        return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
+        try:
+            auction = Auction.objects.get(product=p)
+            return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
+        except Auction.DoesNotExist:
+            return render_to_response('product_form.html',{'product': p, 'auction': False},context_instance=RequestContext(request))
     except Product.DoesNotExist:
         return HttpResponseRedirect('/products/')
 
