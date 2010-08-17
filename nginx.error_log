@@ -9399,3 +9399,110 @@
 2010/08/04 15:17:37 [notice] 1209#0: start worker processes
 2010/08/04 15:17:37 [notice] 1209#0: start worker process 1211
 2010/08/04 15:17:37 [notice] 1209#0: start worker process 1212
+2010/08/05 14:26:36 [notice] 1194#0: using the "epoll" event method
+2010/08/05 14:26:36 [notice] 1194#0: nginx/0.7.65
+2010/08/05 14:26:36 [notice] 1194#0: OS: Linux 2.6.32-23-generic
+2010/08/05 14:26:36 [notice] 1194#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/05 14:26:36 [notice] 1195#0: start worker processes
+2010/08/05 14:26:36 [notice] 1195#0: start worker process 1196
+2010/08/05 14:26:36 [notice] 1195#0: start worker process 1198
+2010/08/05 18:19:39 [error] 1196#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:8000/", host: "localhost:8080"
+2010/08/05 18:19:39 [error] 1196#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:8000/favicon.ico", host: "localhost:8080"
+2010/08/05 19:31:11 [notice] 1195#0: signal 15 (SIGTERM) received, exiting
+2010/08/05 19:31:11 [notice] 1196#0: exiting
+2010/08/05 19:31:11 [notice] 1196#0: exit
+2010/08/05 19:31:11 [notice] 1198#0: exiting
+2010/08/05 19:31:11 [notice] 1198#0: exit
+2010/08/05 19:31:11 [notice] 1195#0: signal 17 (SIGCHLD) received
+2010/08/05 19:31:11 [notice] 1195#0: worker process 1196 exited with code 0
+2010/08/05 19:31:11 [notice] 1195#0: signal 29 (SIGIO) received
+2010/08/05 19:31:11 [notice] 1195#0: signal 17 (SIGCHLD) received
+2010/08/05 19:31:11 [notice] 1195#0: worker process 1198 exited with code 0
+2010/08/05 19:31:11 [notice] 1195#0: exit
+2010/08/06 09:29:30 [notice] 1213#0: using the "epoll" event method
+2010/08/06 09:29:30 [notice] 1213#0: nginx/0.7.65
+2010/08/06 09:29:30 [notice] 1213#0: OS: Linux 2.6.32-23-generic
+2010/08/06 09:29:30 [notice] 1213#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/06 09:29:30 [notice] 1214#0: start worker processes
+2010/08/06 09:29:30 [notice] 1214#0: start worker process 1215
+2010/08/06 09:29:30 [notice] 1214#0: start worker process 1216
+2010/08/06 09:34:40 [notice] 1214#0: signal 10 (SIGUSR1) received, reopening logs
+2010/08/06 09:34:40 [notice] 1214#0: reopening logs
+2010/08/06 09:34:40 [notice] 1215#0: reopening logs
+2010/08/06 09:34:40 [notice] 1216#0: reopening logs
+2010/08/06 13:41:35 [notice] 1214#0: signal 15 (SIGTERM) received, exiting
+2010/08/06 13:41:35 [notice] 1216#0: exiting
+2010/08/06 13:41:35 [notice] 1216#0: exit
+2010/08/06 13:41:35 [notice] 1215#0: exiting
+2010/08/06 13:41:35 [notice] 1215#0: exit
+2010/08/06 13:41:35 [notice] 1214#0: signal 17 (SIGCHLD) received
+2010/08/06 13:41:35 [notice] 1214#0: worker process 1216 exited with code 0
+2010/08/06 13:41:35 [notice] 1214#0: signal 29 (SIGIO) received
+2010/08/06 13:41:35 [notice] 1214#0: signal 17 (SIGCHLD) received
+2010/08/06 13:41:35 [notice] 1214#0: worker process 1215 exited with code 0
+2010/08/06 13:41:35 [notice] 1214#0: exit
+2010/08/16 10:58:21 [notice] 2383#0: using the "epoll" event method
+2010/08/16 10:58:21 [notice] 2383#0: nginx/0.7.65
+2010/08/16 10:58:21 [notice] 2383#0: OS: Linux 2.6.32-23-generic
+2010/08/16 10:58:21 [notice] 2383#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/16 10:58:21 [notice] 2386#0: start worker processes
+2010/08/16 10:58:21 [notice] 2386#0: start worker process 2387
+2010/08/16 10:58:21 [notice] 2386#0: start worker process 2388
+2010/08/16 12:12:36 [error] 2387#0: *4474 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/16 12:12:38 [notice] 2386#0: signal 15 (SIGTERM) received, exiting
+2010/08/16 12:12:38 [notice] 2387#0: exiting
+2010/08/16 12:12:38 [notice] 2387#0: exit
+2010/08/16 12:12:38 [notice] 2388#0: exiting
+2010/08/16 12:12:38 [notice] 2388#0: exit
+2010/08/16 12:12:38 [notice] 2386#0: signal 17 (SIGCHLD) received
+2010/08/16 12:12:38 [notice] 2386#0: worker process 2387 exited with code 0
+2010/08/16 12:12:38 [notice] 2386#0: worker process 2388 exited with code 0
+2010/08/16 12:12:38 [notice] 2386#0: exit
+2010/08/16 12:14:09 [notice] 1178#0: using the "epoll" event method
+2010/08/16 12:14:09 [notice] 1178#0: nginx/0.7.65
+2010/08/16 12:14:09 [notice] 1178#0: OS: Linux 2.6.32-23-generic
+2010/08/16 12:14:09 [notice] 1178#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/16 12:14:09 [notice] 1180#0: start worker processes
+2010/08/16 12:14:09 [notice] 1180#0: start worker process 1183
+2010/08/16 12:14:09 [notice] 1180#0: start worker process 1184
+2010/08/16 12:14:15 [notice] 1180#0: signal 15 (SIGTERM) received, exiting
+2010/08/16 12:14:15 [notice] 1184#0: exiting
+2010/08/16 12:14:15 [notice] 1183#0: exiting
+2010/08/16 12:14:15 [notice] 1183#0: exit
+2010/08/16 12:14:15 [notice] 1184#0: exit
+2010/08/16 12:14:15 [notice] 1180#0: signal 17 (SIGCHLD) received
+2010/08/16 12:14:15 [notice] 1180#0: worker process 1183 exited with code 0
+2010/08/16 12:14:15 [notice] 1180#0: worker process 1184 exited with code 0
+2010/08/16 12:14:15 [notice] 1180#0: exit
+2010/08/17 11:12:15 [notice] 2197#0: using the "epoll" event method
+2010/08/17 11:12:15 [notice] 2197#0: nginx/0.7.65
+2010/08/17 11:12:15 [notice] 2197#0: OS: Linux 2.6.32-23-generic
+2010/08/17 11:12:15 [notice] 2197#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/17 11:12:15 [notice] 2200#0: start worker processes
+2010/08/17 11:12:15 [notice] 2200#0: start worker process 2201
+2010/08/17 11:12:15 [notice] 2200#0: start worker process 2202
+2010/08/17 11:12:52 [error] 2201#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:8000/", host: "localhost:8080"
+2010/08/17 11:12:53 [error] 2201#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:8000/favicon.ico", host: "localhost:8080"
+2010/08/17 13:40:38 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:39 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:40 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:41 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:42 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:43 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:44 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:45 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:46 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:47 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:48 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:49 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:50 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:51 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:52 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:53 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:54 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:55 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:56 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:57 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:58 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:40:59 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/17 13:41:00 [error] 2201#0: *9432 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"

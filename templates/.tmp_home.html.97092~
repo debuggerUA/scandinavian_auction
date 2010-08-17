@@ -19,10 +19,10 @@
 					var i = 0;
 					for(price_num in data["prices_array"])
 					{
-						var id_str = "#div_name_price_" + price_num;//i;
+						var id_str = "#div_name_price_" + i;
 						var htmlstr = "" + data["products_array"][price_num] + " - $" + data["prices_array"][price_num];
 						$(id_str).html(htmlstr);
-						id_str = "#time_left_" + price_num;//i;
+						id_str = "#time_left_" + i;
 						$(id_str).html(data["time_left_array"][price_num]);
 						i++;
 					}
@@ -68,7 +68,7 @@
 										</div>
 										<h3 style="display:block;text-align:center;" id="time_left_{{ forloop.counter0 }}">{{ auction.time_left }}</h3>
 		                        		<div align="center">
-		                        			<a href="/makebid/{{ auction.id }}/" class="art-button"> Make bid </a>
+		                        			<a href="makebid/{{ auction.id }}/" class="art-button"> Make bid </a>
 		                        		</div>
 										<div class="cleared"></div>
 		                            </div>

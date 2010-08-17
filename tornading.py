@@ -15,7 +15,7 @@ define("port", default=8001, help="run on the given port", type=int)
 
 class AJAXHandler(tornado.web.RequestHandler):
     def get(self):
-        querry = 'SELECT id, time_left, price, product_id FROM auction_auction WHERE is_active=TRUE'
+        querry = 'SELECT id, time_left, price, product_id FROM auction_auction WHERE is_active=TRUE ORDER BY id'
         curr.execute(querry)
         auc_rows = curr.fetchall()
         id_hash_sum = 0
