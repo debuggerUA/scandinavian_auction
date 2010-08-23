@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<form action='/registration/' method="post">
+	<table>
+		{{ form }}
+		<tr>
+			{{ error_message }}
+			</td>
+		<tr>
+			<td colspan="2"><input type="submit" value="Registration"></td>
+		</tr>
+	</table>
+</form>
+{% endblock %}

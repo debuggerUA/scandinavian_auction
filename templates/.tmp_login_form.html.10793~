@@ -1,5 +1,5 @@
 {% extends "main.html" %}
-{% block page_name %}Authorization{% endblock %}
+{% block page_name %}Autorization{% endblock %}
 {% block content %}
 <form action="" method="post">
 	<table>

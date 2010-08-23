@@ -1,5 +1,5 @@
 # Django settings for auction project.
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -38,6 +38,10 @@ USE_I18N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/debugger/Work/scandinavian_auction/scandinavian_auction/media'
 
+#Coverage reports
+COVERAGE_REPORT_HTML_OUTPUT_DIR = '/home/debugger/Work/scandinavian_auction/scandinavian_auction/cover'
+
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
@@ -75,14 +79,16 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+    #'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'scandinavian_auction.auth',
     'scandinavian_auction.products',
     'scandinavian_auction.auction',
     'scandinavian_auction.categories',
     'scandinavian_auction.billing',
+    'django_coverage',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

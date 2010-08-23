@@ -29,7 +29,7 @@ def endAuction(id, conn, curr):
 class dbThread(threading.Thread):
     def run(self):
         while work:
-            querry = 'SELECT id, time_left FROM auction_auction WHERE is_active=TRUE'
+            querry = 'SELECT id, time_left FROM auction_auction WHERE is_active=TRUE ORDER BY id'
             curr.execute(querry)
             rows = curr.fetchall()
             for row in rows:

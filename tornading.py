@@ -12,6 +12,7 @@ from django.utils import simplejson
 
 define("port", default=8001, help="run on the given port", type=int)
 
+work = True
 
 class AJAXHandler(tornado.web.RequestHandler):
     def get(self):
@@ -35,17 +36,17 @@ class AJAXHandler(tornado.web.RequestHandler):
 
 
 def main():
-    tornado.options.parse_command_line()
-    application = tornado.web.Application([
-        (r"/", AJAXHandler),
-    ])
-    http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+    if(work):
+        tornado.options.parse_command_line()
+        application = tornado.web.Application([(r"/", AJAXHandler),])
+        http_server = tornado.httpserver.HTTPServer(application)
+        http_server.listen(options.port)
+        tornado.ioloop.IOLoop.instance().start()
+    else:
+        print "can't start"
 
 
 if __name__ == "__main__":
-    work = True
     try:
         conn = connect(database="AuctionDB", user="auction", password="auction")
         curr = conn.cursor()

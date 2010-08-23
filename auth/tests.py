@@ -1,33 +1,24 @@
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
+# coding: utf-8
 
-Replace these with more appropriate tests for your application.
-"""
+from django.test import Client, TestCase
+from django.core import mail
 
-import unittest
-from django.test import TestCase
-from django.test.client import Client
-
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
-
-class AuthTest(TestCase):
-    def registration_test(self):
-        """
-        Registration test
-        """
-        c = Client()
-        
-
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+class ClientTest(TestCase):
+    fixtures = ['testdata.json']
+    
+    def test_registration_login_logout(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'log in.')
+        response = self.client.get('/registration/')
+        self.assertContains(response, 'Login:')
+        self.assertContains(response, 'Password:')
+        response = self.client.post('/registration/', {'login': 'test', 'email': 'test@mail.com', 'password': 'pass', 'confirm_password': 'pass'})
+        self.client.get('/')
+        response = self.client.get('/login/')
+        self.assertContains(response, 'Authorization')
+        self.client.post('/login/', {'login': 'test', 'password': 'pass'})
+        response = self.client.get('/')
+        self.assertContains(response, 'Log Out')
+        self.client.get('/logout/')
+        response = self.client.get('/')
+        self.assertContains(response, 'Welcome, new user.')

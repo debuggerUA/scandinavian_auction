@@ -18,6 +18,7 @@ def login(request):
             user = auth.authenticate(username=login, password=password)
             if user is not None and user.is_active:
                 auth.login(request, user)
+                return HttpResponseRedirect("/")
     val=request.user
     return render_to_response('login_form.html',{'form':form,'val':val},context_instance=RequestContext(request))
 
@@ -28,7 +29,7 @@ def registration(request):
         form = RegistrationForm(data)
         if form.is_valid():
             try:
-                user = User.objects.create_user(request.POST.get("login"), request.POST.get('email'), request.POST.get('password'))
+                user = User.objects.create_user(request.POST.get('login'), request.POST.get('email'), request.POST.get('password'))
                 user.save()
                 bill = Bill(uid=user, bets=0)
                 bill.save()
