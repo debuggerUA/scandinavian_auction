@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'scandinavian_auction.auction',
     'scandinavian_auction.categories',
     'scandinavian_auction.billing',
+    'scandinavian_auction.admin',
     'django_coverage',
 )
 

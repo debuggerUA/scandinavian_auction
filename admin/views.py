@@ -235,7 +235,19 @@ def add_user(request):
         data = request.POST.copy()
         form = AdminAddUserForm(data)
         if form.is_valid():
-            user = User(username = data['username'], password = data['password'], email = data['email'], is_staff = data['is_staff'], is_active = data['is_active'], is_superuser = data['is_superuser'])
+            user = User.objects.create_user(data['username'], data['email'], data['password'])
+            try:
+                user.is_superuser = data['is_superuser']
+            except:
+                user.is_superuser = False
+            try:
+                user.is_staff = data['is_staff']
+            except:
+                user.is_staff = False
+            try:
+                user.is_active = data['is_active']
+            except:
+                user.is_active = False
             user.save()
             return HttpResponseRedirect("/admin/users/")
     return render_to_response('admin/user_form.html', {'user_form': form, 'edit': False}, context_instance=RequestContext(request))
