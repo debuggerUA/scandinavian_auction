@@ -19,10 +19,10 @@ urlpatterns = patterns('',
     
     
     #authorisation views
-    (r'^login/$',login),
-    (r'^registration/$',registration),
-    (r'^logout/$',log_out),
-    (r'^accounts/login/$',login),
+    (r'^login/$',login), #covered by test (simp)
+    (r'^registration/$',registration), #covered by test (simp)
+    (r'^logout/$',log_out), #covered by test (simp)
+    (r'^accounts/login/$',login), #covered by test (simp)
     #end authorisation views
     
     #products views
@@ -41,24 +41,24 @@ urlpatterns = patterns('',
     #end auctions
     
     #admin views
-    (r'^admin/$',admin_main),
-    (r'^admin/login/$',admin_login),
-    (r'^admin/users/$',get_users),
-    (r'^admin/users/add/$',add_user),
-    (r'^admin/users/del/(\d+)/$',del_user),
-    (r'^admin/products/add/$',add_product),
-    (r'^admin/products/$',get_products),
-    (r'^admin/products/del/(\d+)/$',del_product),
+    (r'^admin/$',admin_main), #covered by test (simp)
+    (r'^admin/login/$',admin_login), #covered by test (simp)
+    (r'^admin/users/$',get_users), #covered by test (simp)
+    (r'^admin/users/add/$',add_user), #covered by test (simp)
+    (r'^admin/users/del/(\d+)/$',del_user), #covered by test (simp)
+    (r'^admin/products/add/$',add_product), #covered by test (simp)
+    (r'^admin/products/$',get_products), #covered by test (simp)
+    (r'^admin/products/del/(\d+)/$',del_product), #covered by test (simp)
     (r'^admin/products/edit/(\d+)/$',edit_product),
     (r'^admin/products/(\d+)/$',get_product),
     (r'^admin/auctions/add/$',add_auction),
     (r'^admin/auctions/$',get_auctions),
     (r'^admin/auctions/del/(\d+)/$',del_auction),
     (r'^admin/auctions/edit/(\d+)/$',edit_auction),
-    (r'^admin/categories/$', categories_list_admin),
-    (r'^admin/categories/(\d+)/$', category_show_admin),
-    (r'^admin/categories/add/$',add_category),
-    (r'^admin/categories/del/(\d+)/$',del_category),
+    (r'^admin/categories/$', categories_list_admin), #covered by test (simp)
+    (r'^admin/categories/(\d+)/$', category_show_admin), #covered by test (simp)
+    (r'^admin/categories/add/$',add_category), #covered by test (simp)
+    (r'^admin/categories/del/(\d+)/$',del_category), #covered by test (simp)
     #end admin views
     
     #buy product

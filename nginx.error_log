@@ -9817,3 +9817,41 @@
 2010/08/23 11:05:57 [notice] 4331#0: start worker process 4333
 2010/08/23 12:33:30 [error] 4333#0: *3819 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
 2010/08/23 12:33:31 [error] 4333#0: *3819 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: debugger-laptop, request: "GET /aj_update_main/ HTTP/1.1", upstream: "http://127.0.0.1:8001/", host: "localhost:8080", referrer: "http://localhost:8080/"
+2010/08/24 09:48:27 [notice] 1201#0: using the "epoll" event method
+2010/08/24 09:48:27 [notice] 1201#0: nginx/0.7.65
+2010/08/24 09:48:27 [notice] 1201#0: OS: Linux 2.6.32-23-generic
+2010/08/24 09:48:27 [notice] 1201#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/24 09:48:27 [notice] 1202#0: start worker processes
+2010/08/24 09:48:27 [notice] 1202#0: start worker process 1203
+2010/08/24 09:48:27 [notice] 1202#0: start worker process 1204
+2010/08/24 09:53:33 [notice] 1202#0: signal 10 (SIGUSR1) received, reopening logs
+2010/08/24 09:53:33 [notice] 1202#0: reopening logs
+2010/08/24 09:53:33 [notice] 1203#0: reopening logs
+2010/08/24 09:53:33 [notice] 1204#0: reopening logs
+2010/08/24 10:42:22 [notice] 1202#0: signal 15 (SIGTERM) received, exiting
+2010/08/24 10:42:22 [notice] 1203#0: exiting
+2010/08/24 10:42:22 [notice] 1203#0: exit
+2010/08/24 10:42:22 [notice] 1204#0: exiting
+2010/08/24 10:42:22 [notice] 1204#0: exit
+2010/08/24 10:42:22 [notice] 1202#0: signal 17 (SIGCHLD) received
+2010/08/24 10:42:22 [notice] 1202#0: worker process 1203 exited with code 0
+2010/08/24 10:42:22 [notice] 1202#0: worker process 1204 exited with code 0
+2010/08/24 10:42:22 [notice] 1202#0: exit
+2010/08/24 12:57:39 [notice] 2149#0: using the "epoll" event method
+2010/08/24 12:57:39 [notice] 2149#0: nginx/0.7.65
+2010/08/24 12:57:39 [notice] 2149#0: OS: Linux 2.6.32-23-generic
+2010/08/24 12:57:39 [notice] 2149#0: getrlimit(RLIMIT_NOFILE): 1024:1024
+2010/08/24 12:57:39 [notice] 2150#0: start worker processes
+2010/08/24 12:57:39 [notice] 2150#0: start worker process 2151
+2010/08/24 12:57:39 [notice] 2150#0: start worker process 2152
+2010/08/24 14:11:40 [emerg] 5606#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2010/08/24 14:11:40 [notice] 5606#0: try again to bind() after 500ms
+2010/08/24 14:11:40 [emerg] 5606#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2010/08/24 14:11:40 [notice] 5606#0: try again to bind() after 500ms
+2010/08/24 14:11:40 [emerg] 5606#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2010/08/24 14:11:40 [notice] 5606#0: try again to bind() after 500ms
+2010/08/24 14:11:40 [emerg] 5606#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2010/08/24 14:11:40 [notice] 5606#0: try again to bind() after 500ms
+2010/08/24 14:11:40 [emerg] 5606#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2010/08/24 14:11:40 [notice] 5606#0: try again to bind() after 500ms
+2010/08/24 14:11:40 [emerg] 5606#0: still could not bind()

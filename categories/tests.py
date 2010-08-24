@@ -1,23 +1,33 @@
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
+from django.test import Client, TestCase
+from django.core import mail
+from django.db import models
+from django.contrib.auth.models import User
+from scandinavian_auction.categories.models import Category
 
-Replace these with more appropriate tests for your application.
-"""
-
-from django.test import TestCase
-
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
-
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+class CategoryTest(TestCase):
+    fixtures = ['testdata.json']
+    
+    def test_categories(self):
+        "categories test"
+        self.client.post('/registration/', {'login': 'test', 'email': 'test@mail.com', 'password': 'pass', 'confirm_password': 'pass'})
+        usr = User.objects.get(username = 'test')
+        usr.is_staff = True
+        usr.is_superuser = True
+        usr.save()
+        response = self.client.post('/admin/login/', {'login': 'test', 'password': 'pass'})
+        response = self.client.get('/admin/')
+        self.assertContains(response, 'Administration panel')
+        response = self.client.get('/admin/categories/')
+        self.assertContains(response, 'Categories list')
+        response = self.client.get('/admin/categories/add/')
+        self.assertContains(response, 'Add Category')
+        f = open('media/categories/3.jpg')
+        response = self.client.post('/admin/categories/add/', {'name': 'testcat', 'desc': 'hello, world!','image': f})
+        f.close()
+        response = self.client.get('/admin/categories/')
+        self.assertContains(response, 'testcat')
+        response = self.client.get('/admin/categories/1/')
+        self.assertContains(response, 'hello, world!')
+        response = self.client.get('/admin/categories/del/1/')
+        response = self.client.get('/admin/categories/')
+        self.assertNotContains(response, 'testcat')
