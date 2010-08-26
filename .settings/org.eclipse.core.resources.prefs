@@ -1,10 +1,11 @@
-#Mon Aug 23 15:45:05 EEST 2010
+#Thu Aug 26 11:52:14 EEST 2010
 eclipse.preferences.version=1
 encoding//admin/tests.py=utf-8
 encoding//admin/views.py=utf-8
 encoding//auction/models.py=utf-8
 encoding//auth/tests.py=utf-8
 encoding//billing/models.py=utf-8
+encoding//products/tests.py=utf-8
 encoding/engine_script.py=utf-8
 encoding/settings.py=utf-8
 encoding/tornading.py=utf-8

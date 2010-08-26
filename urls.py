@@ -14,7 +14,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     
-    (r'^$',main),
+    (r'^$',main), #covered by test (simp)
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_DOC_ROOT}),
     
     
@@ -26,18 +26,18 @@ urlpatterns = patterns('',
     #end authorisation views
     
     #products views
-    (r'^products/$', products_list),
-    (r'^products/(\d+)/$', show_product),
+    (r'^products/$', products_list), #covered by test (simp)
+    (r'^products/(\d+)/$', show_product), #covered by test (simp)
     #end products views
     
     #categories
-    (r'^categories/$', show_categories),
-    (r'^categories/(\d+)/$', show_category),
+    (r'^categories/$', show_categories), #covered by test (simp)
+    (r'^categories/(\d+)/$', show_category), #covered by test (simp)
     #end categories
     
     #auctions
-    (r'^auctions/$', show_auctions),
-    (r'^auctions/(\d+)/$', show_auction),
+    (r'^auctions/$', show_auctions), #covered by test (simp)
+    (r'^auctions/(\d+)/$', show_auction), #covered by test (simp)
     #end auctions
     
     #admin views
@@ -51,9 +51,9 @@ urlpatterns = patterns('',
     (r'^admin/products/del/(\d+)/$',del_product), #covered by test (simp)
     (r'^admin/products/edit/(\d+)/$',edit_product),
     (r'^admin/products/(\d+)/$',get_product),
-    (r'^admin/auctions/add/$',add_auction),
-    (r'^admin/auctions/$',get_auctions),
-    (r'^admin/auctions/del/(\d+)/$',del_auction),
+    (r'^admin/auctions/add/$',add_auction), #covered by test (simp)
+    (r'^admin/auctions/$',get_auctions), #covered by test (simp)
+    (r'^admin/auctions/del/(\d+)/$',del_auction), #covered by test (simp)
     (r'^admin/auctions/edit/(\d+)/$',edit_auction),
     (r'^admin/categories/$', categories_list_admin), #covered by test (simp)
     (r'^admin/categories/(\d+)/$', category_show_admin), #covered by test (simp)

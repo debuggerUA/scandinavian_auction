@@ -7,6 +7,7 @@ class ClientTest(TestCase):
     fixtures = ['testdata.json']
     
     def test_registration_login_logout(self):
+        print 'starting registration/login/logout test'
         response = self.client.get('/')
         self.assertContains(response, 'log in.')
         response = self.client.get('/registration/')
