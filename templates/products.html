@@ -1,7 +1,44 @@
-<head>
-	<title>Products list</title>
-</head>
-<body>
+{% extends "pages.html" %}
+
+{% block page_name %}Product list{% endblock %}
+
+{% block content %}
+<style>
+	.mytable
+	{
+		border:0px solid #ffffff;
+		font-size:16px;
+	}
+	.mytable > tr > td
+	{
+		border:10px solid #0f0f0f;
+		background-color:#999999;
+		text-align:center;
+	}
+	.mytable tbody tr
+	{
+		border:10px solid #0f0f0f;
+
+	}
+	.mytable td
+	{
+		padding-left:10px;
+	}
+	
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	$(".mytable tbody tr").hover(function(){
+	$(this).css("background-color", "#ffffff");
+	},function(){
+	$(this).attr("style","");
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	});
+});
+</script>
+
+
 <table class="mytable" style="width:100%;">
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
@@ -42,8 +79,9 @@
         </span>
 
         {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}">&gt;&gt;</a>
+            <a href="?page={{ products.next_page_number }}/">&gt;&gt;</a>
         {% endif %}
     </span>
 </div>
-</body>
+
+{% endblock %}

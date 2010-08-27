@@ -1,16 +1,49 @@
-<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html>
-    <head>
-        <title>Categories list</title>
-    </head>
-		
-    <body>
-    	<table class="mytable" style="width:100%;">
+{% extends "pages.html" %}
+
+{% block page_name %}Categories list{% endblock %}
+
+{% block content %}
+<style>
+	.mytable
+	{
+		border:0px solid #ffffff;
+		font-size:16px;
+	}
+	.mytable > tr > td
+	{
+		border:10px solid #0f0f0f;
+		background-color:#999999;
+		text-align:center;
+	}
+	.mytable tbody tr
+	{
+		border:10px solid #0f0f0f;
+
+	}
+	.mytable td
+	{
+		padding-left:10px;
+	}
+	
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	$(".mytable tbody tr").hover(function(){
+	$(this).css("background-color", "#ffffff");
+	},function(){
+	$(this).attr("style","");
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	});
+});
+</script>
+
+<table class="mytable" style="width:100%;">
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
 			<td style="padding:10px;">Name</td>
-			<td style="padding:10px;">Image</td>
 			<td style="padding:10px;">Description</td>
+			<td style="padding:10px;">Image</td>
 			<td style="padding:10px;">&nbsp;</td>
 		</tr>
 	</thead>
@@ -45,6 +78,5 @@
         {% endif %}
     </span>
 </div>
-    </body>
-</html>
 
+{% endblock %}

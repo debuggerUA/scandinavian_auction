@@ -46,7 +46,16 @@ def category_show_admin(request,id):
 
 def show_category(request,id):
     cat = Category.objects.get(id=id)
-    products = Product.objects.filter(category=cat)
+    products_list = Product.objects.filter(category=cat)
+    paginator = Paginator(products_list, 10)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    try:
+        products = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        products = paginator.page(paginator.num_pages)
     return render_to_response('category.html', {'category': cat, 'products': products}, context_instance=RequestContext(request))
 
 def show_categories(request):

@@ -1,25 +1,45 @@
-<head>
-	<title>{{ user.name }}</title>
-	</head>
+{% extends "pages.html" %}
 
-<body>
-	<a href="/">Main</a> <a href="/categories/">Categories</a><br><br>
-	
-	<b>Username:</b> {{ user.username }}<br>
-	<b>Email:</b> {{ user.email }}<br>
-	<b>Bets:</b> {{ bill.bets }}<br>
-	<table>
-		<tr>
-			<b>My latest bids:</b><br>
-			{% for bid in bids %}
-			<li><a href="/products/{{bid.auction.product.id}}/">{{ bid.auction.product }}</a></li>
-			{% endfor %}
-		</tr>
-		<tr>
-			<b>Auctions I've won:</b><br>
-			{% for auc in auc_won %}
+{% block page_name %}Cabinet{% endblock %}
+
+{% block content %}
+
+<table>
+	<tr>
+		<td align="right"><b>UserName:</b></td>
+		<td>{{ user.username }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>First Name:</b></td>
+		<td>{{ user.first_name }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Last Name:</b></td>
+		<td>{{ user.last_name }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Email:</b></td>
+		<td>{{ user.email }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Bets:</b></td>
+		<td>{{ bill.bets }}</td>
+	</tr>
+	<tr>
+		<td align="right"><b>My latest bids:</b></td>
+		<td>
+		{% for bid in bids %}
+			<li><a href="/auctions/{{ bid.id }}/">{{ bid.product.name }}</a></li>
+		{% endfor %}
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><b>Auctions I've won:</b></td>
+		<td>
+		{% for auc in auc_won %}
 			<li><a href="/products/{{auc.product.id}}/">{{ auc.product.name }}</a> <a href="/buy/{{ auc.id }}/">Get it!</a></li>
-			{% endfor %}
-		</tr>
-	</table>
-</body>
+		{% endfor %}
+		</td>
+	</tr>
+</table>
+{% endblock %}

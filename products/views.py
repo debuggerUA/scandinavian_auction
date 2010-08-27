@@ -32,7 +32,7 @@ def show_product(request,id):
     try:
         p = Product.objects.get(id=id)
         try:
-            auction = Auction.objects.get(product=p)
+            auction = Auction.objects.get(product=p, is_active=True)
             return render_to_response('product_form.html',{'product': p, 'auction': auction},context_instance=RequestContext(request))
         except Auction.DoesNotExist:
             return render_to_response('product_form.html',{'product': p, 'auction': False},context_instance=RequestContext(request))
@@ -46,7 +46,7 @@ def make_bid(request,id):
     try:
         auction = Auction.objects.get(id=id)
     except Auction.DoesNotExist:
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect('/')
     if bill.bets > 0:
         bid = Bid(user=user, time=datetime.datetime.now(), auction=auction)
         bid.save()
@@ -58,6 +58,6 @@ def make_bid(request,id):
         auction.save()
         bill.bets -= 1
         bill.save()
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect('/')
     else:
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect('/')

@@ -17,7 +17,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def show_auctions(request):
-    auction_list = Auction.objects.all()
+    auction_list = Auction.objects.filter(is_active = True)
     paginator = Paginator(auction_list, 10)
     try:
         page = int(request.GET.get('page', '1'))

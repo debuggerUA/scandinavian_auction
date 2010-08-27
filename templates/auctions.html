@@ -1,5 +1,44 @@
-<title></title>
-<body>
+{% extends "pages.html" %}
+
+{% block page_name %}Auction list{% endblock %}
+
+{% block content %}
+<style>
+	.mytable
+	{
+		border:0px solid #ffffff;
+		font-size:16px;
+	}
+	.mytable > tr > td
+	{
+		border:10px solid #0f0f0f;
+		background-color:#999999;
+		text-align:center;
+	}
+	.mytable tbody tr
+	{
+		border:10px solid #0f0f0f;
+
+	}
+	.mytable td
+	{
+		padding-left:10px;
+	}
+	
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	$(".mytable tbody tr").hover(function(){
+	$(this).css("background-color", "#ffffff");
+	},function(){
+	$(this).attr("style","");
+	$(".mytable tbody tr:odd").css("background-color", "#dfdfdf");
+	});
+});
+</script>
+
+
 <table class="mytable" style="width:100%;">
 	<thead>
 		<tr align="center" style="text-align:center;background-color:#999999;color:#FFFFFF;">
@@ -14,7 +53,7 @@
 	{% for auction in auctions.object_list %}
 		<tr>
 			<td>
-				<a href="/products/{{ auction.product.id }}/" >{{ auction.product.name }}</a>
+				<a href="/auctions/{{ auction.id }}/" >{{ auction.product.name }}</a>
 			</td>
 			<td>
 				{{ auction.price }}
@@ -44,4 +83,5 @@
         {% endif %}
     </span>
 </div>
-</body>
+
+{% endblock %}

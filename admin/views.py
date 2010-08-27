@@ -277,8 +277,17 @@ def user_page(request):
         usr = User.objects.get(id=request.user.id)
         bill = Bill.objects.get(uid=usr.id)
         mybids = Bid.objects.filter(user=request.user.id)
-        auct_won = Auction.objects.filter(won_by=request.user.id)
-        return render_to_response('user.html', {'user': usr, 'bill': bill, 'bids': mybids, 'auc_won': auct_won}, context_instance=RequestContext(request))
+        bids_auc_id = [] #список ID аукционов, в которых принимал участие
+        for bid in mybids:
+            if bid.auction.id not in bids_auc_id:
+                bids_auc_id.append(bid.auction.id)
+        u_bids = [] #список АУКЦИОНОВ
+        for id in bids_auc_id:
+            au = Auction.objects.get(id = id)
+            u_bids.append(au)
+        print u_bids 
+        auct_won = Auction.objects.filter(won_by = usr.id, is_active = True)
+        return render_to_response('user.html', {'user': usr, 'bill': bill, 'bids': u_bids, 'auc_won': auct_won}, context_instance=RequestContext(request))
     return HttpResponseRedirect('/')
 
 def buy_it(request, id):
